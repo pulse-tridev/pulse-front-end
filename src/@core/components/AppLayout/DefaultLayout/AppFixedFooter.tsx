@@ -13,7 +13,7 @@ const AppFixedFooter: React.FC = () => {
       }}
     >
       <Typography variant="body2" color="text.secondary">
-        © 2024 Pulse Dashboard. Todos os direitos reservados.
+        © 2025 Pulse Dashboard. Todos os direitos reservados.
       </Typography>
     </Box>
   );

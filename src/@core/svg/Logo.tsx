@@ -1,11 +1,16 @@
 import * as React from "react";
 
-const PulseLogo = () => (
+interface PulseLogoProps {
+  width: number;
+  height: number;
+}
+
+const PulseLogo: React.FC<PulseLogoProps> = ({ width, height }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    width="60"
-    height="60"
+    width={width}
+    height={height}
     fill="none"
     viewBox="0 0 155 153"
   >

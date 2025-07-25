@@ -1,171 +1,41 @@
 import React from "react";
-import { Box } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Fonts } from "@core/constants/AppEnum";
-import { useRouter } from "next/navigation";
-import { orange } from "@mui/material/colors";
-import AppLoader from "@core/components/AppLoader";
+import { Box, Typography, useTheme } from "@mui/material";
+import PulseLogo from "@core/svg/Logo";
 
-type UserInfoProps = {
-  color?: string;
-};
-
-const user = {
-  displayName: "Luis Felippe",
-  email: "luis.email@gmail.com",
-  photoURL: undefined,
-};
-
-const UserInfo: React.FC<UserInfoProps> = ({ color = "text.secondary" }) => {
-  // const { logout } = useAuthMethod();
-  // const { user } = useAuthUser();
-  const router = useRouter();
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const getUserAvatar = () => {
-    if (user.displayName) {
-      return user.displayName.charAt(0).toUpperCase();
-    }
-    if (user.email) {
-      return user.email.charAt(0).toUpperCase();
-    }
-  };
-
-  if (!user || !user.email) {
-    return <AppLoader />;
-  }
+const BrandHeader = () => {
+  const theme = useTheme();
 
   return (
-    <>
-      <Box
-        onClick={handleClick}
+    <Box
+      className="brand-header"
+      sx={{
+        py: 3,
+        px: 3,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: { xs: 56, sm: 70 },
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        boxSizing: "border-box",
+      }}
+    >
+      <PulseLogo width={40} height={40} />
+      <Typography
+        component="span"
         sx={{
-          py: 3,
-          px: 3,
-          display: "flex",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
-        className="user-info-view"
-      >
-        <Box sx={{ py: 0.5 }}>
-          {user?.photoURL ? (
-            <Avatar
-              sx={{
-                height: 40,
-                width: 40,
-                fontSize: 24,
-                backgroundColor: orange[500],
-              }}
-              src={user.photoURL}
-            />
-          ) : (
-            <Avatar
-              sx={{
-                height: 40,
-                width: 40,
-                fontSize: 24,
-                backgroundColor: orange[500],
-              }}
-            >
-              {getUserAvatar()}
-            </Avatar>
-          )}
-        </Box>
-        <Box
-          sx={{
-            width: { xs: "calc(100% - 62px)", xl: "calc(100% - 72px)" },
-            ml: 4,
-            color: color,
-          }}
-          className="user-info"
-        >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box
-              sx={{
-                mb: 0,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-                fontSize: 16,
-                fontWeight: Fonts.MEDIUM,
-                color: "inherit",
-              }}
-              component="span"
-            >
-              {user.displayName ? user.displayName : "Admin User "}
-            </Box>
-            <Box
-              sx={{
-                ml: 3,
-                color: "inherit",
-                display: "flex",
-              }}
-            >
-              <ExpandMoreIcon />
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              mt: -0.5,
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              color: "inherit",
-            }}
-          >
-            System Manager
-          </Box>
-        </Box>
-      </Box>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          ml: 2,
+          color: "primary.main",
+          fontWeight: 800,
+          fontSize: { xs: 20, sm: 24 },
+          letterSpacing: 1.5,
+          textTransform: "uppercase",
+          fontFamily: `"Poppins", "Roboto", sans-serif`,
         }}
       >
-        <MenuItem
-          onClick={() => {
-            handleClose();
-            router.push("/account/my-profile");
-          }}
-        >
-          My account
-        </MenuItem>
-        <MenuItem
-        // onClick={logout}
-        >
-          Logout
-        </MenuItem>
-      </Menu>
-    </>
+        Pulse
+      </Typography>
+    </Box>
   );
 };
 
-export default UserInfo;
+export default BrandHeader;

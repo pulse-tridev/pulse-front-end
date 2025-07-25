@@ -3,8 +3,8 @@ import "./globals.css";
 import ThemeProvider from "@core/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Pulse",
-  description: "Pulse",
+  title: "Pulse Dashboard",
+  description: "Pulse Dashboard",
 };
 
 export default function RootLayout({
