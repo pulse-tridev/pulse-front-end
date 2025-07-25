@@ -4,9 +4,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { AppAccountPopover } from "./components/AccountPopover";
 
 type Props = {
   toggleNavCollapsed: () => void;
@@ -21,6 +21,9 @@ const AppHeader: React.FC<Props> = ({ toggleNavCollapsed }) => {
       position="relative"
       color="inherit"
       sx={{
+        maxHeight: { xs: 56, sm: 70 },
+        height: { xs: 56, sm: 70 },
+        boxSizing: "border-box",
         boxShadow: "none",
         borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
         backgroundColor: "background.paper",
@@ -34,7 +37,6 @@ const AppHeader: React.FC<Props> = ({ toggleNavCollapsed }) => {
       <Toolbar
         sx={{
           boxSizing: "border-box",
-          minHeight: { xs: 56, sm: 70 },
           paddingLeft: { xs: 5 },
           paddingRight: { xs: 5, md: 7.5, xl: 12.5 },
         }}
@@ -60,27 +62,12 @@ const AppHeader: React.FC<Props> = ({ toggleNavCollapsed }) => {
           </IconButton>
         )}
 
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              flexGrow: 0,
-              fontWeight: 600,
-              color: "primary.main",
-            }}
-          >
-            Pulse Dashboard
-          </Typography>
-        </Box>
-
         <Box
           sx={{
             flexGrow: 1,
           }}
         />
-
-        {/* Aqui você pode adicionar componentes adicionais como notificações, etc. */}
+        <AppAccountPopover />
       </Toolbar>
     </AppBar>
   );

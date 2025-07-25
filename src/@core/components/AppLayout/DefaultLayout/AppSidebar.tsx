@@ -35,8 +35,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
               sx={{
                 py: 2,
                 height: "calc(100vh - 70px) !important",
-                borderTop: (theme) => `solid 1px ${theme.palette.divider}`,
-                mt: 0.5,
+                // borderTop: (theme) => `solid 1px ${theme.palette.divider}`,
               }}
             >
               <VerticalNav routesConfig={routesConfig} />
@@ -50,8 +49,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
             sx={{
               py: 2,
               height: "calc(100vh - 70px) !important",
-              borderTop: (theme) => `solid 1px ${theme.palette.divider}`,
-              mt: 0.5,
+              // borderTop: (theme) => `solid 1px ${theme.palette.divider}`,
             }}
           >
             <VerticalNav routesConfig={routesConfig} />
