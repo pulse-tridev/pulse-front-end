@@ -12,77 +12,54 @@ export const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#0A8FDC",
-      contrastText: "#fff",
+      main: "#0077B6",
+      contrastText: "#FFFFFF",
     },
     secondary: {
-      main: "#F04F47",
+      main: "#00B4D8",
+      contrastText: "#FFFFFF",
     },
     background: {
-      default: "#F4F7FE",
+      default: "#FAFAFA", // cinza zero (quase branco)
       paper: "#FFFFFF",
     },
     text: {
-      primary: "rgb(17, 24, 39)",
-      secondary: "rgb(107, 114, 128)",
-      disabled: "rgb(149, 156, 169)",
+      primary: "#102A43", // azul profundo, elegante
+      secondary: "#627D98", // cinza azulado moderno
+      disabled: "#9FB3C8", // tom neutro suave
     },
     success: {
-      main: "#11C15B",
-      light: "#D9F5E5",
+      main: "#38B000", // verde vivo moderno
+      light: "#D9FBE0",
+      contrastText: "#fff",
     },
     warning: {
-      main: "#FF5252",
-      light: "#FFECDC",
+      main: "#F94144", // vermelho vibrante
+      light: "#FFE3E3",
+      contrastText: "#fff",
     },
-    divider: "rgba(224, 224, 224, 1)",
+    divider: "#DCE8F2", // azul bem claro
   },
   typography: {
     fontFamily: ["Poppins", "sans-serif"].join(","),
     fontSize: 14,
     fontWeight: 400,
-    h1: {
-      fontSize: 22,
-      fontWeight: 600,
-    },
-    h2: {
-      fontSize: 20,
-      fontWeight: 500,
-    },
-    h3: {
-      fontSize: 18,
-      fontWeight: 500,
-    },
-    h4: {
-      fontSize: 16,
-      fontWeight: 500,
-    },
-    h5: {
-      fontSize: 14,
-      fontWeight: 500,
-    },
-    h6: {
-      fontSize: 12,
-      fontWeight: 500,
-    },
-    subtitle1: {
-      fontSize: 14,
-    },
-    subtitle2: {
-      fontSize: 16,
-    },
-    body1: {
-      fontSize: 14,
-    },
-    body2: {
-      fontSize: 12,
-    },
+    h1: { fontSize: 22, fontWeight: 600 },
+    h2: { fontSize: 20, fontWeight: 500 },
+    h3: { fontSize: 18, fontWeight: 500 },
+    h4: { fontSize: 16, fontWeight: 500 },
+    h5: { fontSize: 14, fontWeight: 500 },
+    h6: { fontSize: 12, fontWeight: 500 },
+    subtitle1: { fontSize: 14 },
+    subtitle2: { fontSize: 16 },
+    body1: { fontSize: 14 },
+    body2: { fontSize: 12 },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 4,
+          borderRadius: 6,
           textTransform: "capitalize",
           fontWeight: 500,
         },
@@ -91,8 +68,8 @@ export const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          boxShadow: "0px 10px 10px 4px rgba(0, 0, 0, 0.04)",
+          borderRadius: 12,
+          boxShadow: "0px 8px 24px rgba(0, 119, 182, 0.08)",
           "& .MuiCardContent-root:last-of-type": {
             paddingBottom: 16,
           },
@@ -102,21 +79,21 @@ export const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 12,
         },
       },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 4,
+          borderRadius: 6,
         },
       },
     },
     MuiSelect: {
       styleOverrides: {
         root: {
-          borderRadius: 4,
+          borderRadius: 6,
         },
       },
     },
