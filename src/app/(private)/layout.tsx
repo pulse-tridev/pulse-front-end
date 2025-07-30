@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import DefaultLayout from "@core/components/AppLayout/DefaultLayout";
+import DefaultLayout from "@core/components/CoreLayout/CoreDefaultLayout";
 
 type Props = {
   children: React.ReactNode;

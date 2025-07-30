@@ -69,7 +69,8 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 12,
-          boxShadow: "0px 8px 24px rgba(0, 119, 182, 0.08)",
+          boxShadow:
+            "0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04)",
           "& .MuiCardContent-root:last-of-type": {
             paddingBottom: 16,
           },

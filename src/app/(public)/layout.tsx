@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import BlankLayout from "@core/components/AppLayout/BlankLayout";
+import BlankLayout from "@core/components/CoreLayout/CoreBlankLayout";
 
 type Props = {
   children: React.ReactNode;
