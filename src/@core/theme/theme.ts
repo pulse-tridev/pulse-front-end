@@ -73,10 +73,16 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
+          borderRadius: 6,
+          fontWeight: 600,
+          padding: "8px 18px",
           textTransform: "none",
-          fontWeight: 500,
-          padding: "6px 18px",
+          fontSize: "0.95rem",
+          boxShadow: "none",
+          transition: "background-color 0.1s ease, transform 0.1s ease",
+          "&:active": {
+            transform: "scale(0.98)",
+          },
         },
       },
     },
@@ -84,7 +90,7 @@ export const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
+          borderRadius: 12,
           boxShadow: "0 8px 24px rgba(0, 0, 0, 0.04)",
           border: "1px solid #E6EDF3",
           transition: "0.3s ease",
@@ -98,7 +104,7 @@ export const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
+          borderRadius: 14,
         },
       },
     },
@@ -106,7 +112,7 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 10,
+          borderRadius: 6,
           backgroundColor: "#fff",
           transition: "border-color 0.2s ease",
           "& fieldset": {
@@ -146,7 +152,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 10,
-          padding: 8,
+          padding: 10,
           transition: "background 0.2s ease",
           "&:hover": {
             backgroundColor: "#f1f5f9",
@@ -188,11 +194,12 @@ export const theme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: 20,
+          borderRadius: 18,
           padding: 0,
           boxShadow: "0 24px 48px rgba(0, 0, 0, 0.08)",
           maxWidth: "600px",
           width: "100%",
+          transitionDuration: "300ms",
         },
       },
     },
@@ -234,7 +241,12 @@ export const theme = createTheme({
     MuiSnackbarContent: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 10,
+          padding: "12px 20px",
+          fontWeight: 500,
+          backgroundColor: "#102A43",
+          color: "#fff",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         },
       },
     },

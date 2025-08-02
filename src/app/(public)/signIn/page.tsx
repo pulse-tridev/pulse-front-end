@@ -7,7 +7,6 @@ import WelcomeSection from "src/features/auth/ui/WelcomeSection";
 const cardStyles = {
   width: "100%",
   maxWidth: 460,
-  borderRadius: 5,
   padding: 4,
   backdropFilter: "blur(8px)",
   backgroundColor: "rgba(255, 255, 255, 0.95)",
@@ -15,7 +14,7 @@ const cardStyles = {
 };
 
 export default function LoginPage() {
-  const projectName = "Pulse Dashboard";
+  const projectName = "Pulse Dashboard - Gestão Inteligente";
   const brandName = "Pulse";
 
   return (
@@ -34,14 +33,14 @@ export default function LoginPage() {
           <CardContent
             sx={{ display: "flex", flexDirection: "column", gap: 5 }}
           >
-            <Box
+            {/* <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
               }}
             >
               <LogoWithName name={brandName} />
-            </Box>
+            </Box> */}
 
             <WelcomeSection projectName={projectName} />
 

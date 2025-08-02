@@ -6,18 +6,28 @@ type AuthWelcomeProps = {
 
 export default function WelcomeSection({ projectName }: AuthWelcomeProps) {
   return (
-    <Box>
-      <Typography variant="h4" fontWeight={600} textAlign="center" gutterBottom>
-        {`Bem vindo ao ${projectName}! 👋`}
+    <Box textAlign="center">
+      <Typography
+        variant="h5"
+        fontWeight={500}
+        color="text.secondary"
+        letterSpacing={1}
+        mb={1}
+      >
+        Bem-vindo
+      </Typography>
+
+      <Typography variant="h4" fontWeight={700} color="text.primary" mb={2}>
+        {projectName}
       </Typography>
 
       <Typography
         variant="body1"
-        textAlign="center"
-        mb={3}
         color="text.secondary"
+        maxWidth={360}
+        mx="auto"
       >
-        Faça login na sua conta e ajude alguém que precisa de você!
+        Acesse sua conta e continue oferecendo cuidado com tecnologia e empatia.
       </Typography>
     </Box>
   );

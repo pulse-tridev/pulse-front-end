@@ -31,6 +31,7 @@ const SigninForm = () => {
       sx={{ display: "flex", flexDirection: "column", gap: 6 }}
     >
       <AppTextField
+        size="medium"
         fullWidth
         label="Usuário"
         {...register("login")}
