@@ -32,7 +32,6 @@ const Header: React.FC<Props> = ({ toggleNavCollapsed }) => {
           xs: "100%",
         },
       }}
-      className="app-bar"
     >
       <Toolbar
         sx={{

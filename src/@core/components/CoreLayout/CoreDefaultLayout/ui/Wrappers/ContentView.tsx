@@ -24,7 +24,6 @@ const ContentView: React.FC<ContentViewProps> = ({ children }) => {
           flexDirection: "column",
           p: { xs: 2, md: 3, xl: 4 },
         }}
-        className="app-content"
       >
         {children}
       </Box>

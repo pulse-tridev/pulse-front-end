@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Sidebar from "./ui/Sidebar";
 import Footer from "./ui/Footer";
@@ -18,9 +18,9 @@ const CoreDefaultLayout: React.FC<CoreDefaultLayoutProps> = ({ children }) => {
   const pathname = usePathname();
   const [isNavCollapsed, setNavCollapsed] = useState(false);
 
-  const toggleNavCollapsed = () => {
+  const toggleNavCollapsed = useCallback(() => {
     setNavCollapsed(!isNavCollapsed);
-  };
+  }, []);
 
   useEffect(() => {
     setNavCollapsed(false);
@@ -28,7 +28,7 @@ const CoreDefaultLayout: React.FC<CoreDefaultLayoutProps> = ({ children }) => {
 
   return (
     <LayoutContainer>
-      <DefaultLayout className="defaultLayoutWrapper">
+      <DefaultLayout>
         <Sidebar
           isNavCollapsed={isNavCollapsed}
           toggleNavCollapsed={toggleNavCollapsed}

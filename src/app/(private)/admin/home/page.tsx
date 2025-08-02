@@ -1,4 +1,13 @@
 "use client";
+import CoreConfirmDialog from "@core/components/CoreDialog/CoreDialogSubmit";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 import React, { useState } from "react";
 
 const HomePage = () => {
@@ -6,8 +15,9 @@ const HomePage = () => {
 
   const [count, setCount] = useState<number>(1);
   const [user, setUser] = useState({ name: "John", age: 20 });
+  const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleCount = () => {
     setCount((prev) => prev + 1);
   };
 
@@ -19,13 +29,34 @@ const HomePage = () => {
     }));
   };
 
+  const toggleDialogState = () => {
+    setDialogOpen((prev) => !prev);
+  };
+
+  const handleSubmit = () => {
+    console.log("Dialog submitted");
+    setDialogOpen(false);
+  };
+
   return (
     <div>
       <h1>homepage</h1>
-      <button onClick={handleClick}>Click me</button>
+      <button onClick={handleCount}>count</button>
       <h1>{count}</h1>
 
       <button onClick={handleChangeUser}>Change user</button>
+
+      <button onClick={toggleDialogState}>open dialog</button>
+
+      <CoreConfirmDialog
+        title={"Use Google's location service?"}
+        description={
+          "Let Google help apps determine location. This means sending anonymouslocation data to Google, even when no apps are running."
+        }
+        isOpen={dialogOpen}
+        onClose={toggleDialogState}
+        onSubmit={handleSubmit}
+      />
 
       <ViewUser user={user} />
     </div>

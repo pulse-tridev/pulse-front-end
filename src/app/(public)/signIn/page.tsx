@@ -15,37 +15,41 @@ const cardStyles = {
 };
 
 export default function LoginPage() {
-  const projectName = "Pulse";
+  const projectName = "Pulse Dashboard";
+  const brandName = "Pulse";
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        width: "100%",
-        backgroundColor: "background.default",
-      }}
-    >
-      <Card elevation={12} sx={cardStyles}>
-        <CardContent sx={{ display: "flex", flexDirection: "column", gap: 5 }}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-            }}
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          width: "100%",
+          zIndex: 1,
+        }}
+      >
+        <Card elevation={12} sx={cardStyles}>
+          <CardContent
+            sx={{ display: "flex", flexDirection: "column", gap: 5 }}
           >
-            <LogoWithName name={projectName} />
-          </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <LogoWithName name={brandName} />
+            </Box>
 
-          <WelcomeSection projectName={"Pulse Dashboard"} />
+            <WelcomeSection projectName={projectName} />
 
-          <SigninForm />
-        </CardContent>
-      </Card>
-
+            <SigninForm />
+          </CardContent>
+        </Card>
+      </Box>
       <Illustrations />
-    </Box>
+    </>
   );
 }

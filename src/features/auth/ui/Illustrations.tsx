@@ -1,47 +1,45 @@
-"use client";
-
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { styled, useTheme } from "@mui/material/styles";
+import { Box } from "@mui/material";
 import Image from "next/image";
 
-const MaskImg = styled("img")({
-  width: "100%",
-  position: "absolute",
-  bottom: 0,
-  zIndex: 1,
-});
+const Illustrations = () => (
+  <Box
+    sx={{
+      position: "absolute",
+      inset: 0,
+      zIndex: 0,
+      pointerEvents: "none",
+      display: { xs: "none", md: "block" },
+    }}
+  >
+    <Image
+      alt="doctor"
+      src="/images/illustrations/doctor.svg"
+      width={330}
+      height={220}
+      style={{ position: "absolute", bottom: 20, left: 80 }}
+    />
 
-const Illustrations = () => {
-  const maskBackground = "/images/illustrations/mask/misc-mask-light.png";
+    <Box
+      component="img"
+      src="/images/illustrations/mask/misc-mask-light.png"
+      alt="mask"
+      sx={{
+        width: "100%",
+        position: "absolute",
+        bottom: 0,
+        zIndex: 1,
+        pointerEvents: "none",
+      }}
+    />
 
-  const theme = useTheme();
-  const hidden = useMediaQuery(theme.breakpoints.down("md"));
-
-  if (!hidden) {
-    return (
-      <>
-        <Image
-          alt={"doctor"}
-          src={"/images/illustrations/doctor.svg"}
-          width={330}
-          height={220}
-          style={{ position: "absolute", bottom: 20, left: 80 }}
-        />
-
-        <MaskImg alt="mask" src={maskBackground} />
-
-        <Image
-          alt={"nature"}
-          src={"/images/illustrations/nature.svg"}
-          width={190}
-          height={180}
-          style={{ position: "absolute", right: 50, bottom: 80 }}
-        />
-      </>
-    );
-  } else {
-    return null;
-  }
-};
+    <Image
+      alt="nature"
+      src="/images/illustrations/nature.svg"
+      width={190}
+      height={180}
+      style={{ position: "absolute", right: 50, bottom: 80 }}
+    />
+  </Box>
+);
 
 export default Illustrations;

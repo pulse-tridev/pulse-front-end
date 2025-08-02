@@ -1,23 +1,12 @@
 import React, { ReactNode } from "react";
-import Box from "@mui/material/Box";
+import BlankLayout from "./Wrappers/BlankLayout";
 
 type Props = {
   children: ReactNode;
 };
 
 const CoreBlankLayout: React.FC<Props> = ({ children }) => {
-  return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        display: "flex",
-        backgroundColor: (theme) => theme.palette.background.default,
-        width: "100%",
-      }}
-    >
-      {children}
-    </Box>
-  );
+  return <BlankLayout>{children}</BlankLayout>;
 };
 
 export default CoreBlankLayout;

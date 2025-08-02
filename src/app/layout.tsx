@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ThemeProvider from "@core/components/ThemeProvider";
 import ReactQueryProvider from "@core/providers/ReactQueryProvider";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 export const metadata: Metadata = {
   title: "Pulse Dashboard",
@@ -26,16 +27,17 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </head>
       <body>
-        <ReactQueryProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </ReactQueryProvider>
+        <AppRouterCacheProvider>
+          <ThemeProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
