@@ -11,14 +11,6 @@ const Illustrations = () => (
       display: { xs: "none", md: "block" },
     }}
   >
-    <Image
-      alt="doctor"
-      src="/images/illustrations/mascot/mascot-1.png"
-      width={330}
-      height={220}
-      style={{ position: "absolute", bottom: 20, left: 300, zIndex: 2 }}
-    />
-
     <Box
       component="img"
       src="/images/illustrations/mask/misc-mask-light.png"
