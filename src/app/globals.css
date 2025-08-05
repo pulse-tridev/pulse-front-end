@@ -1,86 +1,30 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Import da fonte principal */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+
+/* Scroll suave em toda a página */
+html {
+  scroll-behavior: smooth;
+  /* Ativa dark/light conforme mídia */
+  color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Foco acessível */
+*:focus-visible {
+  outline: 2px solid #03a9f4;
+  outline-offset: 2px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: "Poppins", "Roboto", Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-h1 {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-h3 {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-h4 {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-h5 {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-h6 {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-p {
-  font-size: 14px;
-  font-weight: 400;
-}
-
+/* Link padrão (você pode ajustar para usar palette.primary do MUI) */
 a {
-  color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  text-decoration: underline;
 }
 
-.pointer {
-  cursor: pointer;
-}
-
+/* Imagens responsivas */
 img {
+  max-width: 100%;
   height: auto;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

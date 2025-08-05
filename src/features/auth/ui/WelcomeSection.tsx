@@ -7,17 +7,7 @@ type AuthWelcomeProps = {
 export default function WelcomeSection({ projectName }: AuthWelcomeProps) {
   return (
     <Box textAlign="center">
-      <Typography
-        variant="h5"
-        fontWeight={500}
-        color="text.secondary"
-        letterSpacing={1}
-        mb={1}
-      >
-        Bem-vindo
-      </Typography>
-
-      <Typography variant="h4" fontWeight={700} color="text.primary" mb={2}>
+      <Typography variant="h1" mb={2}>
         {projectName}
       </Typography>
 

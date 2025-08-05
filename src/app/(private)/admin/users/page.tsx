@@ -14,8 +14,13 @@ import {
   Avatar,
   Chip,
   Button,
+  Stack,
+  Tooltip,
+  IconButton,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+
+import { Edit } from "@mui/icons-material";
 
 const UsersPage = () => {
   const users = [
@@ -25,7 +30,6 @@ const UsersPage = () => {
       email: "joao@example.com",
       role: "Admin",
       status: "Ativo",
-      avatar: null,
     },
     {
       id: 2,
@@ -33,7 +37,6 @@ const UsersPage = () => {
       email: "maria@example.com",
       role: "Editor",
       status: "Ativo",
-      avatar: null,
     },
     {
       id: 3,
@@ -41,41 +44,39 @@ const UsersPage = () => {
       email: "pedro@example.com",
       role: "Viewer",
       status: "Inativo",
-      avatar: null,
     },
   ];
 
   return (
-    <Box>
+    <Box p={4}>
+      {/* Header */}
       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          mb: 4,
-        }}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={4}
       >
         <Box>
-          <Typography variant="h4" component="h1" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Usuários
           </Typography>
           <Typography variant="body1" color="text.secondary">
             Gerencie os usuários do sistema
           </Typography>
         </Box>
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          sx={{ height: "fit-content" }}
-        >
+        {/* <Button variant="contained" startIcon={<AddIcon />}>
           Novo Usuário
+        </Button> */}
+        <Button variant="outlined" startIcon={<AddIcon />}>
+          Novo usuário
         </Button>
       </Box>
 
+      {/* User Table */}
       <Card>
         <CardContent sx={{ p: 0 }}>
           <TableContainer component={Paper} elevation={0}>
-            <Table sx={{ minWidth: 650 }}>
+            <Table>
               <TableHead>
                 <TableRow sx={{ backgroundColor: "grey.50" }}>
                   <TableCell>Usuário</TableCell>
@@ -85,15 +86,13 @@ const UsersPage = () => {
                   <TableCell align="right">Ações</TableCell>
                 </TableRow>
               </TableHead>
+
               <TableBody>
                 {users.map((user) => (
-                  <TableRow
-                    key={user.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
+                  <TableRow key={user.id}>
                     <TableCell>
-                      <Box sx={{ display: "flex", alignItems: "center" }}>
-                        <Avatar sx={{ mr: 2, bgcolor: "primary.main" }}>
+                      <Box display="flex" alignItems="center" gap={2}>
+                        <Avatar sx={{ bgcolor: "primary.main" }}>
                           {user.name.charAt(0)}
                         </Avatar>
                         <Typography variant="body2" fontWeight={500}>
@@ -101,11 +100,13 @@ const UsersPage = () => {
                         </Typography>
                       </Box>
                     </TableCell>
+
                     <TableCell>
                       <Typography variant="body2" color="text.secondary">
                         {user.email}
                       </Typography>
                     </TableCell>
+
                     <TableCell>
                       <Chip
                         label={user.role}
@@ -113,6 +114,7 @@ const UsersPage = () => {
                         color={user.role === "Admin" ? "primary" : "default"}
                       />
                     </TableCell>
+
                     <TableCell>
                       <Chip
                         label={user.status}
@@ -120,10 +122,32 @@ const UsersPage = () => {
                         color={user.status === "Ativo" ? "success" : "default"}
                       />
                     </TableCell>
+
                     <TableCell align="right">
-                      <Button size="small" variant="outlined">
+                      <Tooltip title="Editar">
+                        <IconButton size="small">
+                          <Edit fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Editar">
+                        <IconButton size="small">
+                          <Edit fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Editar">
+                        <IconButton size="small">
+                          <Edit fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
+                      {/* <Tooltip title="Excluir">
+                          <IconButton size="small" color="inherit">
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        </Tooltip> */}
+
+                      {/* <Button variant="outlined" size="small">
                         Editar
-                      </Button>
+                      </Button> */}
                     </TableCell>
                   </TableRow>
                 ))}
