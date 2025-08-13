@@ -9,7 +9,7 @@ import { ChatProvider } from "./context/useChatContext";
 
 const FabContainer = styled(Box)(({ theme }) => ({
   position: "fixed",
-  bottom: theme.spacing(8),
+  bottom: theme.spacing(6),
   right: theme.spacing(6),
   zIndex: 1300,
 }));

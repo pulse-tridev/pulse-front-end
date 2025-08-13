@@ -26,7 +26,7 @@ const AuthLayoutBackground = ({ backgroundImage }: BackgroundProps) => {
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(to bottom right, rgba(0,0,0,0.1), rgba(0,0,0,0.3))",
+            "linear-gradient(to bottom right, rgba(0,0,0,0.2), rgba(0,0,0,0.4))",
           zIndex: 1,
         }}
       />

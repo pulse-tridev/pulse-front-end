@@ -1,5 +1,5 @@
 "use client";
-import CoreConfirmDialog from "@core/components/CoreDialog/CoreDialogSubmit";
+import CoreConfirmDialog from "@core/components/CoreDialog/CoreDialogSubmit/CoreConfirmDialog";
 import {
   Button,
   Dialog,

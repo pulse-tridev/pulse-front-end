@@ -2,23 +2,26 @@
 import { Box, Card } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export const AuthContainerStyled = styled(Box)(({ theme }) => ({
+export const AuthContainerStyled = styled(Card)(({ theme }) => ({
   display: "flex",
   borderRadius: theme.shape.borderRadius,
   minHeight: "630px",
   zIndex: 1,
+  backgroundColor: theme.palette.background.paper,
+  overflow: "visible",
 }));
 
-export const AuthContainerLeftSideStyled = styled(Box)(({ theme }) => ({
+export const AuthContainerBrand = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "520px",
+  width: "550px",
+  position: "relative",
 }));
 
-export const AuthContainerRightSideStyled = styled(Card)(({ theme }) => ({
+export const AuthContainerContent = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "520px",
+  width: "490px",
 }));

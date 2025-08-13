@@ -164,8 +164,8 @@ export const createPalette = () => ({
     contrastText: "#ffffff",
   },
   background: {
-    default: spectrumColors.gray[50],
-    paper: spectrumColors.gray[50],
+    default: "#FAFAFB",
+    paper: "#FFFFFF",
   },
   surface: {
     default: "#ffffff",

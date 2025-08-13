@@ -1,9 +1,9 @@
-import AuthContainerLeftSide from "./AuthContainer.LeftSide";
-import AuthContainerRightSide from "./AuthContainer.RightSide";
+import AuthContainerBrand from "./AuthContainer.Brand";
+import AuthContainerContent from "./AuthContainer.Content";
 import AuthContainerRoot from "./AuthContainer.Root";
 
 export const AuthContainer = {
   Root: AuthContainerRoot,
-  LeftSide: AuthContainerLeftSide,
-  RightSide: AuthContainerRightSide,
+  Brand: AuthContainerBrand,
+  Content: AuthContainerContent,
 };

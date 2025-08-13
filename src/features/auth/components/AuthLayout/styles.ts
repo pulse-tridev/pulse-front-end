@@ -52,6 +52,6 @@ export const Footer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: theme.palette.background.default,
   padding: "0 5%",
 }));
