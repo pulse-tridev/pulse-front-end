@@ -33,7 +33,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
               width: 280,
               backgroundColor: theme.palette.background.paper,
               boxSizing: "border-box",
-              borderRight: `1px solid ${theme.palette.divider}`,
+              borderRight: 1,
+              borderColor: theme.palette.divider,
             },
           }}
         >

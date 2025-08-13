@@ -1,11 +1,8 @@
-/* Import da fonte principal */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
-
 /* Scroll suave em toda a página */
 html {
   scroll-behavior: smooth;
-  /* Ativa dark/light conforme mídia */
-  color-scheme: light dark;
+  /* Sistema opera apenas em light */
+  color-scheme: light;
 }
 
 /* Foco acessível */

@@ -1,5 +1,5 @@
+import BlankLayout from "@core/components/CoreLayout/BlankLayout";
 import React from "react";
-import BlankLayout from "@core/components/CoreLayouts/BlankLayout";
 
 type Props = {
   children: React.ReactNode;

@@ -48,7 +48,7 @@ const UsersPage = () => {
   ];
 
   return (
-    <Box p={4}>
+    <Box sx={{ p: 4 }}>
       {/* Header */}
       <Box
         display="flex"
@@ -78,7 +78,7 @@ const UsersPage = () => {
           <TableContainer component={Paper} elevation={0}>
             <Table>
               <TableHead>
-                <TableRow sx={{ backgroundColor: "grey.50" }}>
+                <TableRow>
                   <TableCell>Usuário</TableCell>
                   <TableCell>Email</TableCell>
                   <TableCell>Função</TableCell>
@@ -91,8 +91,15 @@ const UsersPage = () => {
                 {users.map((user) => (
                   <TableRow key={user.id}>
                     <TableCell>
-                      <Box display="flex" alignItems="center" gap={2}>
-                        <Avatar sx={{ bgcolor: "primary.main" }}>
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", gap: 2 }}
+                      >
+                        <Avatar
+                          sx={{
+                            bgcolor: "primary.main",
+                            color: "common.white",
+                          }}
+                        >
                           {user.name.charAt(0)}
                         </Avatar>
                         <Typography variant="body2" fontWeight={500}>
@@ -108,32 +115,21 @@ const UsersPage = () => {
                     </TableCell>
 
                     <TableCell>
-                      <Chip
-                        label={user.role}
-                        size="small"
-                        color={user.role === "Admin" ? "primary" : "default"}
-                      />
+                      <Chip label={user.role} size="small" variant="outlined" />
                     </TableCell>
 
                     <TableCell>
                       <Chip
                         label={user.status}
                         size="small"
-                        color={user.status === "Ativo" ? "success" : "default"}
+                        color={user.status === "Ativo" ? "success" : undefined}
+                        variant={
+                          user.status === "Ativo" ? "filled" : "outlined"
+                        }
                       />
                     </TableCell>
 
                     <TableCell align="right">
-                      <Tooltip title="Editar">
-                        <IconButton size="small">
-                          <Edit fontSize="small" />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Editar">
-                        <IconButton size="small">
-                          <Edit fontSize="small" />
-                        </IconButton>
-                      </Tooltip>
                       <Tooltip title="Editar">
                         <IconButton size="small">
                           <Edit fontSize="small" />

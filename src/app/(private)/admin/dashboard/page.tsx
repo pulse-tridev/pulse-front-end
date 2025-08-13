@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import {
   Box,
   Container,
-  Grid,
   Card,
   CardContent,
   CardHeader,
@@ -58,6 +57,7 @@ import {
   Drawer,
   ListItemButton,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import {
   Dashboard as DashboardIcon,
   Person as PersonIcon,
@@ -500,7 +500,7 @@ export default function DashboardPage() {
                               </RadioGroup>
                             </FormControl>
                           </Grid>
-                          <Grid item xs={12}>
+                          <Grid xs={12}>
                             <FormControlLabel
                               control={
                                 <Switch
@@ -516,7 +516,7 @@ export default function DashboardPage() {
                               label="Ativar notificações"
                             />
                           </Grid>
-                          <Grid item xs={12}>
+                          <Grid xs={12}>
                             <Box sx={{ display: "flex", gap: 2 }}>
                               <Button type="submit" variant="contained">
                                 Salvar
@@ -629,7 +629,7 @@ export default function DashboardPage() {
                   </Card>
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid xs={12} md={6}>
                   <Card>
                     <CardHeader
                       title="Distribuição de Usuários"
@@ -818,7 +818,7 @@ export default function DashboardPage() {
                   onChange={(e) => handleFormChange("name", e.target.value)}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid xs={12}>
                 <TextField
                   fullWidth
                   label="Email"

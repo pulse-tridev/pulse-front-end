@@ -18,7 +18,7 @@ const AuthenticatedLayout = ({ children }: AuthenticatedLayoutProps) => {
   const [isNavCollapsed, setNavCollapsed] = useState(false);
 
   const toggleNavCollapsed = useCallback(() => {
-    setNavCollapsed(!isNavCollapsed);
+    setNavCollapsed((prev) => !prev);
   }, []);
 
   useEffect(() => {

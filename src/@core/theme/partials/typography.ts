@@ -1,10 +1,8 @@
-import { pxToRem } from "@core/utils";
-import { Theme, TypographyVariants } from "@mui/material";
-import { spectrumColors } from "./palette";
+import { Theme } from "@mui/material";
 
 // Adobe React Spectrum Typography System
 const manropeFontStack = [
-  "Manrope",
+  "var(--font-manrope)",
   "-apple-system",
   "BlinkMacSystemFont",
   "Segoe UI",
@@ -14,91 +12,90 @@ const manropeFontStack = [
   "sans-serif",
 ].join(",");
 
-export const createTypography = (theme: Theme): TypographyVariants => ({
+export const createTypography = (theme: Theme) => ({
   fontFamily: manropeFontStack,
   fontSize: 14,
   htmlFontSize: 16,
-  pxToRem,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightBold: 700,
   h1: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(32),
+    fontSize: theme.typography.pxToRem(32),
     fontWeight: 700,
-    lineHeight: pxToRem(40), // 40px
+    lineHeight: 1.25, // 40px / 32px -> unitless as recommended
     letterSpacing: "-0.02em",
     margin: 0,
-    color: spectrumColors.gray[900],
+    color: theme.vars ? theme.vars.palette.text.primary : undefined,
   },
   h2: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(24), // 24px
+    fontSize: theme.typography.pxToRem(24), // 24px
     fontWeight: 600,
     lineHeight: 1.3,
     letterSpacing: "-0.01em",
   },
   h3: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(20), // 20px
+    fontSize: theme.typography.pxToRem(20), // 20px
     fontWeight: 500,
     lineHeight: 1.4,
     letterSpacing: "0em",
   },
   h4: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(16), // 16px
+    fontSize: theme.typography.pxToRem(16), // 16px
     fontWeight: 500,
     lineHeight: 1.4,
     letterSpacing: "0.01em",
   },
   h5: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(14), // 14px
+    fontSize: theme.typography.pxToRem(14), // 14px
     fontWeight: 500,
     lineHeight: 1.4,
     letterSpacing: "0.01em",
   },
   h6: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(12), // 12px
+    fontSize: theme.typography.pxToRem(12), // 12px
     fontWeight: 500,
     lineHeight: 1.4,
     letterSpacing: "0.02em",
   },
   subtitle1: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(16), // 16px
+    fontSize: theme.typography.pxToRem(16), // 16px
     fontWeight: 700,
     lineHeight: 1.5,
     letterSpacing: "0.01em",
-    color: spectrumColors.gray[700],
+    color: theme.vars ? theme.vars.palette.text.secondary : undefined,
   },
   subtitle2: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(14), // 14px
+    fontSize: theme.typography.pxToRem(14), // 14px
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: "0.01em",
   },
   body1: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(14), // 14px
+    fontSize: theme.typography.pxToRem(14), // 14px
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: "0.01em",
   },
   body2: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(12), // 12px
+    fontSize: theme.typography.pxToRem(12), // 12px
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: "0.02em",
   },
   button: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(14), // 14px
+    fontSize: theme.typography.pxToRem(14), // 14px
     fontWeight: 500,
     lineHeight: 1.4,
     letterSpacing: "0.01em",
@@ -106,14 +103,14 @@ export const createTypography = (theme: Theme): TypographyVariants => ({
   },
   caption: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(12), // 12px
+    fontSize: theme.typography.pxToRem(12), // 12px
     fontWeight: 400,
     lineHeight: 1.4,
     letterSpacing: "0.02em",
   },
   overline: {
     fontFamily: manropeFontStack,
-    fontSize: pxToRem(10), // 10px
+    fontSize: theme.typography.pxToRem(10), // 10px
     fontWeight: 500,
     lineHeight: 1.4,
     letterSpacing: "0.1em",

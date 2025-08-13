@@ -30,17 +30,22 @@ const FloatingButton = styled(Avatar)(({ theme }) => ({
   width: 60,
   height: 60,
   cursor: "pointer",
-  backgroundColor: "#dfdfdf",
   borderRadius: "50%",
-
   boxSizing: "border-box",
-
-  "&:active": {
-    background: "#cacaca", // remove a borda no clique (opcional)
-  },
-
-  "$:hover": {
+  backgroundColor: theme.vars ? theme.vars.palette.grey[200] : undefined,
+  border: theme.vars ? `1px solid ${theme.vars.palette.divider}` : undefined,
+  transition: theme.transitions.create(
+    ["transform", "background-color", "box-shadow"],
+    {
+      duration: theme.transitions.duration.short,
+    }
+  ),
+  "&:hover": {
     transform: "scale(1.05)",
+    backgroundColor: theme.vars ? theme.vars.palette.grey[300] : undefined,
+  },
+  "&:active": {
+    backgroundColor: theme.vars ? theme.vars.palette.grey[400] : undefined,
   },
 }));
 

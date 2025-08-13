@@ -15,27 +15,14 @@ const VerticalNav = ({ routesConfig }: VerticalNavProps) => {
   const onNavigate = (url: string) => router.push(url);
 
   return (
-    <List
-      component="nav"
-      sx={{
-        height: `calc(100vh - ${theme.spacing(12)})`,
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: theme.palette.background.paper,
-        padding: 0,
-        overflowY: "auto",
-        borderRight: `1px solid ${theme.palette.divider}`,
-      }}
-    >
+    <List component="nav" sx={{ p: 0 }}>
       <Box sx={{ px: 3, py: 2, mb: 1 }}>
         <Typography
           variant="overline"
           sx={{
-            fontSize: 12,
             fontWeight: 600,
-            color: theme.palette.text.secondary,
+            color: "text.secondary",
             textTransform: "uppercase",
-            letterSpacing: 0.5,
           }}
         >
           Navegação
