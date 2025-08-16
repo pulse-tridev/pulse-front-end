@@ -1,13 +1,22 @@
-import AuthCardContent from "./AuthCard.Content";
-import AuthCardInstruction from "./AuthCard.Instruction";
-import AuthCardRoot from "./AuthCard.Root";
-import AuthCardSubtitle from "./AuthCard.Subtitle";
-import AuthCardTitle from "./AuthCard.Title";
+import { Box, Typography } from "@mui/material";
+import * as S from "./styles";
+import Image from "next/image";
+import BrandContent from "./components/BrandContent";
+import SigninForm from "../Forms/SigninForm";
 
-export const AuthCard = {
-  Root: AuthCardRoot,
-  Title: AuthCardTitle,
-  Subtitle: AuthCardSubtitle,
-  Content: AuthCardContent,
-  Instruction: AuthCardInstruction,
+const AuthCard = () => {
+  return (
+    <S.Container>
+      <S.BrandSection>
+        <BrandContent />
+      </S.BrandSection>
+
+      <S.AuthSection>
+        <Typography variant="h2">Fazer Login</Typography>
+        <SigninForm />
+      </S.AuthSection>
+    </S.Container>
+  );
 };
+
+export default AuthCard;

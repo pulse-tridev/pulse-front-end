@@ -164,8 +164,8 @@ export const createPalette = (mode: "light" | "dark" = "light") => ({
     contrastText: "#ffffff",
   },
   background: {
-    default: "#FAFAFB",
-    paper: "#FFFFFF",
+    default: "#FFFFFF",
+    paper: "#f9f9f9",
   },
   surface: {
     default: "#ffffff",

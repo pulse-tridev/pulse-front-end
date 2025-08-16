@@ -1,75 +1,35 @@
+import UnauthenticatedLayout from "@core/components/CoreLayout/UnauthenticatedLayout";
 import { Box, Typography } from "@mui/material";
-import { AuthLayout } from "src/features/auth/components/AuthLayout";
-import { AuthCard } from "src/features/auth/components/AuthCard";
-import { AuthContainer } from "src/features/auth/components/AuthContainer.tsx";
-import SigninForm from "src/features/auth/components/SigninForm";
-import Image from "next/image";
-import CoreBrandLogo from "@core/components/CoreBranding/CoreBrandLogo";
-import CoreBrandName from "@core/components/CoreBranding/CoreBrandName";
+import AuthCard from "src/features/auth/components/AuthCard";
 
 export default function SignInPage() {
   const projectName = "Pulse Dashboard - Gestão Inteligente";
   return (
-    <AuthLayout.Root>
-      {/* <AuthLayout.Background backgroundImage="/images/backgrounds/signin-bg.png" /> */}
-      {/* <AuthLayout.Header>
-        <h1>{projectName}</h1>
-      </AuthLayout.Header> */}
+    <UnauthenticatedLayout.Root>
+      {/* <UnauthenticatedLayout.Background imgSrc="/images/backgrounds/bg-4k.png" /> */}
+      {/* <UnauthenticatedLayout.Header>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: "100%",
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
+          <h3>Pulse.ai</h3>
+        </Box>
+      </UnauthenticatedLayout.Header> */}
 
-      <AuthLayout.Body>
-        <AuthContainer.Root>
-          <AuthContainer.Brand>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              asd
-            </Box>
+      <UnauthenticatedLayout.Body>
+        <AuthCard />
+      </UnauthenticatedLayout.Body>
 
-            <Box
-              sx={{
-                position: "absolute",
-                bottom: 32,
-                left: 60,
-                transform: "translateX(-50%)",
-                zIndex: 999,
-                width: 500,
-                height: 500,
-              }}
-            >
-              <Image
-                src="/images/illustrations/mascot/mascot-1.png"
-                alt="Mascote Vitta"
-                fill
-                style={{ objectFit: "contain" }}
-                priority
-              />
-            </Box>
-          </AuthContainer.Brand>
-          <AuthContainer.Content>
-            <AuthCard.Root>
-              <AuthCard.Title>Fazer login</AuthCard.Title>
-
-              <AuthCard.Instruction>
-                Para acessar o sistema, faça login com seu e-mail e senha.
-              </AuthCard.Instruction>
-
-              <SigninForm />
-            </AuthCard.Root>
-          </AuthContainer.Content>
-        </AuthContainer.Root>
-      </AuthLayout.Body>
-
-      <AuthLayout.Footer>
-        <p>
+      <UnauthenticatedLayout.Footer>
+        <Typography variant="body2">
           Copyright © {new Date().getFullYear()} Vitta. All rights reserved.
-        </p>
-      </AuthLayout.Footer>
-    </AuthLayout.Root>
+        </Typography>
+      </UnauthenticatedLayout.Footer>
+    </UnauthenticatedLayout.Root>
   );
 }
