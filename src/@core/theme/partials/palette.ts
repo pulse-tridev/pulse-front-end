@@ -10,6 +10,9 @@ type SpectrumColorScale = {
   700: string;
   800: string;
   900: string;
+  1000?: string;
+  1100?: string;
+  1200?: string;
 };
 
 export const spectrumColors: {
@@ -24,15 +27,18 @@ export const spectrumColors: {
 } = {
   blue: {
     50: "#E1F5FE",
-    100: "#e0f2ff",
-    200: "#cae8ff",
-    300: "#b5deff",
-    400: "#96cefd",
-    500: "#78bbfa",
-    600: "#59a7f6",
-    700: "#3892f3",
-    800: "#147af3",
-    900: "#0265dc",
+    100: "#E0F2FF",
+    200: "#CAE8FF",
+    300: "#B5DEFF",
+    400: "#96CEFD",
+    500: "#78BBFA",
+    600: "#59A7F6",
+    700: "#3892F3",
+    800: "#147AF3",
+    900: "#0265DC",
+    1000: "#0051B8",
+    1100: "#003C94",
+    1200: "#002870",
   },
 
   gray: {
@@ -128,21 +134,22 @@ export const spectrumColors: {
 export const createPalette = (mode: "light" | "dark" = "light") => ({
   mode,
   primary: {
-    main: spectrumColors.blue[800],
-    light: spectrumColors.blue[800],
-    dark: spectrumColors.blue[800],
+    main: spectrumColors.blue[900],
+    light: spectrumColors.blue[900],
+    dark: spectrumColors.blue[900],
     contrastText: "#ffffff",
+    
   },
   secondary: {
-    main: spectrumColors.gray[800],
+    main: spectrumColors.red[900],
     light: spectrumColors.gray[800],
     dark: spectrumColors.gray[800],
     contrastText: "#ffffff",
   },
   error: {
-    main: spectrumColors.red[500],
-    light: spectrumColors.red[300],
-    dark: spectrumColors.red[700],
+    main: spectrumColors.red[900],
+    light: spectrumColors.red[900],
+    dark: spectrumColors.red[900],
     contrastText: "#ffffff",
   },
   warning: {
@@ -177,7 +184,7 @@ export const createPalette = (mode: "light" | "dark" = "light") => ({
   text: {
     primary: spectrumColors.gray[900],
     secondary: spectrumColors.gray[800],
-    disabled: spectrumColors.gray[400],
+    disabled: spectrumColors.gray[700],
   },
   divider: spectrumColors.gray[200],
   action: {

@@ -9,14 +9,14 @@ export const Wrapper = styled(Box)(({ theme }) => ({
   alignItems: "center",
   // backgroundColor: theme.palette.background.paper,
   background: `
-    radial-gradient(
-      circle at bottom left,
-      rgba(0, 0, 0, 0.08) 0%,
-      rgba(0, 0, 0, 0.04) 25%,
-      transparent 60%
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(245, 245, 245, 0.95) 40%,
+      rgba(250, 250, 250, 1) 100%
     )
   `,
-  backgroundColor: "#fdfdfd",
+  backdropFilter: "blur(12px)",
   minHeight: "100vh",
   width: "100%",
   position: "relative",
@@ -51,7 +51,13 @@ export const Body = styled(Box)(({ theme }) => ({
   height: "100%",
   width: "100%",
   backgroundColor: "transparent",
-  padding: "0 5%",
+  paddingLeft: theme.spacing(20),
+  paddingRight: theme.spacing(20),
+
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
 }));
 
 export const Footer = styled(Box)(({ theme }) => ({
@@ -60,7 +66,14 @@ export const Footer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  height: "35px",
-  // backgroundColor: theme.palette.background.default,
-  padding: "0 5%",
+  height: "40px",
+  backgroundColor: theme.palette.background.default,
+  // padding: "0 5%",
+  paddingLeft: theme.spacing(20),
+  paddingRight: theme.spacing(20),
+
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
 }));

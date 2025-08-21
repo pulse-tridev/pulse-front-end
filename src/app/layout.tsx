@@ -7,6 +7,7 @@ import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 import { Manrope } from "next/font/google";
 import { CoreFloatingChat } from "@core/components/CoreFloatingChat";
 import NoSsr from "@mui/material/NoSsr";
+import { ToastProvider } from "@core/providers/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Pulse Dashboard",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider>
             <ReactQueryProvider>
+              <ToastProvider />
               {children}
               <NoSsr>
                 <CoreFloatingChat avatarImage="/images/illustrations/mascot/mascot-front-waving.png" />

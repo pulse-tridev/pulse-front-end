@@ -107,6 +107,9 @@ export const createComponents = (theme: Theme) => ({
     },
   },
   MuiTextField: {
+    defaultProps: {
+      size: "small",
+    },
     styleOverrides: {
       root: {
         // Ajustes globais também impactam X-Date-Pickers porque eles usam TextField/OutlinedInput
@@ -468,7 +471,16 @@ export const createComponents = (theme: Theme) => ({
   },
   MuiLink: {
     defaultProps: {
-      underline: "hover" as const,
+      underline: "always" as const,
+    },
+    styleOverrides: {
+      root: {
+        cursor: "pointer",
+        textDecorationColor: "inherit",
+        "&:hover": {
+          textDecorationColor: "inherit",
+        },
+      },
     },
   },
   MuiContainer: {

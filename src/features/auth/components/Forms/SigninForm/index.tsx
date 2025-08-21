@@ -1,14 +1,16 @@
 "use client";
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import AppTextField from "@core/components/CoreForm/CoreTextField";
 import { LoginFormData, loginSchema } from "./signinFormSchema";
 import { Box, Button, Grid, InputLabel } from "@mui/material";
 import { useSigninForm } from "./useSigninForm";
-import { Trash } from "lucide-react";
+import CoreTextField from "@core/components/CoreForm/CoreTextField";
+import { useToast } from "@core/hooks/useToast";
 
 const SigninForm = () => {
+  const toast = useToast();
   const [isPasswordShown, setIsPasswordShown] = useState(false);
 
   const {
@@ -22,8 +24,17 @@ const SigninForm = () => {
   const loginMutation = useSigninForm();
 
   const onSubmit = (data: LoginFormData) => {
-    loginMutation.mutate(data);
+    loginMutation.mutate(data, {
+      onSuccess: (response) => {
+        toast.success("Login realizado com sucesso!");
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
+    });
   };
+
+  console.log("renderizou");
 
   return (
     <>
@@ -41,14 +52,13 @@ const SigninForm = () => {
           <InputLabel htmlFor="login" sx={{ mb: 1 }}>
             Endereço de e-mail
           </InputLabel>
-          <AppTextField
-            id="login"
+          <CoreTextField
+            id="username"
             autoFocus
-            size="small"
             fullWidth
-            {...register("login")}
-            error={!!errors.login}
-            helperText={errors.login?.message}
+            {...register("username")}
+            error={!!errors.username}
+            helperText={errors.username?.message}
             autoComplete="off"
           />
         </Grid>
@@ -57,10 +67,9 @@ const SigninForm = () => {
           <InputLabel htmlFor="password" sx={{ mb: 1 }}>
             Senha
           </InputLabel>
-          <AppTextField
+          <CoreTextField
             id="password"
             fullWidth
-            size="small"
             type={isPasswordShown ? "text" : "password"}
             {...register("password")}
             error={!!errors.password}
@@ -68,7 +77,7 @@ const SigninForm = () => {
             autoComplete="off"
           />
         </Grid>
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Button type="submit" variant="contained" size="large">
             Entrar
           </Button>

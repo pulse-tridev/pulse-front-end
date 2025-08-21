@@ -1,16 +1,18 @@
 import { Theme } from "@mui/material";
 
 // Adobe React Spectrum Typography System
-const manropeFontStack = [
-  "var(--font-manrope)",
-  "-apple-system",
-  "BlinkMacSystemFont",
-  "Segoe UI",
-  "Roboto",
-  "Helvetica Neue",
-  "Arial",
-  "sans-serif",
-].join(",");
+// const manropeFontStack = [
+//   "var(--font-manrope)",
+//   "-apple-system",
+//   "BlinkMacSystemFont",
+//   "Segoe UI",
+//   "Roboto",
+//   "Helvetica Neue",
+//   "Arial",
+//   "sans-serif",
+// ].join(",");
+
+const manropeFontStack = "var(--font-manrope), sans-serif";
 
 export const createTypography = (theme: Theme) => ({
   fontFamily: manropeFontStack,
@@ -75,21 +77,21 @@ export const createTypography = (theme: Theme) => ({
   subtitle2: {
     fontFamily: manropeFontStack,
     fontSize: theme.typography.pxToRem(14), // 14px
-    fontWeight: 400,
+    fontWeight: 600,
     lineHeight: 1.5,
     letterSpacing: "0.01em",
   },
   body1: {
     fontFamily: manropeFontStack,
     fontSize: theme.typography.pxToRem(14), // 14px
-    fontWeight: 400,
+    fontWeight: 600,
     lineHeight: 1.5,
     letterSpacing: "0.01em",
   },
   body2: {
     fontFamily: manropeFontStack,
     fontSize: theme.typography.pxToRem(12), // 12px
-    fontWeight: 400,
+    fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: "0.02em",
   },

@@ -5,18 +5,11 @@ import { styled } from "@mui/material/styles";
 export const Container = styled(Card)(({ theme }) => ({
   display: "flex",
   maxHeight: "630px",
+  height: "600px",
   zIndex: 1,
-  borderRadius: theme.shape.borderRadius,
-  // backgroundColor: theme.palette.background.default,
-  background: `
-    radial-gradient(
-      circle at bottom left,
-      rgba(0, 0, 0, 0.08) 0%,
-      rgba(0, 0, 0, 0.04) 25%,
-      transparent 60%
-    )
-  `,
-  backgroundColor: "#fdfdfd",
+  // borderRadius: theme.shape.borderRadius,
+  // borderRadius: theme.spacing(2),
+  background: theme.palette.background.default,
   overflow: "visible",
 }));
 

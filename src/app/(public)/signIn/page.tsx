@@ -1,5 +1,5 @@
 import UnauthenticatedLayout from "@core/components/CoreLayout/UnauthenticatedLayout";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Link, Stack, Typography } from "@mui/material";
 import AuthCard from "src/features/auth/components/AuthCard";
 
 export default function SignInPage() {
@@ -26,9 +26,61 @@ export default function SignInPage() {
       </UnauthenticatedLayout.Body>
 
       <UnauthenticatedLayout.Footer>
-        <Typography variant="body2">
-          Copyright © {new Date().getFullYear()} Vitta. All rights reserved.
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 2,
+            width: "100%",
+            // borderTop: "1px solid",
+
+            // py: 1,
+            // px: { xs: 2, sm: 6 },
+          }}
+        >
+          {/* Left side - Branding / Copyright */}
+          <Typography variant="body2" color="text.secondary">
+            © {new Date().getFullYear()} Pulse Dashboard – Gestão Inteligente
+          </Typography>
+
+          {/* Right side - Inline professional links */}
+          <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+            <Link
+              href="/help-center"
+              underline="hover"
+              color="text.secondary"
+              sx={{ "&:hover": { color: "text.primary" } }}
+            >
+              Central de Ajuda
+            </Link>
+            <Link
+              href="/terms"
+              underline="hover"
+              color="text.secondary"
+              sx={{ "&:hover": { color: "text.primary" } }}
+            >
+              Termos de Uso
+            </Link>
+            <Link
+              href="/privacy"
+              underline="hover"
+              color="text.secondary"
+              sx={{ "&:hover": { color: "text.primary" } }}
+            >
+              Política de Privacidade
+            </Link>
+            <Link
+              href="/contact"
+              underline="hover"
+              color="text.secondary"
+              sx={{ "&:hover": { color: "text.primary" } }}
+            >
+              Contato
+            </Link>
+          </Box>
+        </Box>
       </UnauthenticatedLayout.Footer>
     </UnauthenticatedLayout.Root>
   );
