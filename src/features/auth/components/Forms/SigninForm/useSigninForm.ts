@@ -1,16 +1,14 @@
-import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import {
-  LoginRequestDTO,
-  LoginResponseDTO,
-} from "src/features/auth/api/auth.dto";
-import { login } from "src/features/auth/api/auth.service";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, LoginFormData } from "./signinFormSchema";
+import { useLogin } from "src/features/auth/hooks/useLogin";
 
-export const useSigninForm = () =>
-  useMutation<
-    LoginResponseDTO,
-    AxiosError<{ message: string }>,
-    LoginRequestDTO
-  >({
-    mutationFn: login,
+export function useSigninForm() {
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
   });
+
+  const loginMutation = useLogin();
+
+  return { form, loginMutation };
+}

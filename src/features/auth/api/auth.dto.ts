@@ -1,8 +1,11 @@
 export interface LoginRequestDTO {
-  username: string;
+  email: string;
   password: string;
 }
 
 export interface LoginResponseDTO {
-  token: string;
+  accessToken: string;
+  refreshToken: string;
 }
+
+export interface RefreshTokenResponseDTO extends LoginResponseDTO {}
