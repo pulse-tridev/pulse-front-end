@@ -1,6 +1,8 @@
 import type { IconButtonProps } from "@mui/material/IconButton";
 import React, { useState, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import axios from "axios";
+import { useAuthStore } from "src/features/auth/store/auth.store";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -78,10 +80,11 @@ export const AccountPopover = ({
 
   const handleLogout = useCallback(() => {
     handleClosePopover();
-    // Implementar logout real aqui
-    console.log("Fazendo logout...");
-    // router.push('/signIn');
-  }, [handleClosePopover]);
+    useAuthStore.getState().logout();
+    axios.post("/api/session/clear").finally(() => {
+      router.push("/signin");
+    });
+  }, [handleClosePopover, router]);
 
   return (
     <>
@@ -296,4 +299,3 @@ export const AccountPopover = ({
     </>
   );
 };
-

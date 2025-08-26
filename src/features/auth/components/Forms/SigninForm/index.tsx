@@ -4,21 +4,31 @@ import { Box, Button, Grid, InputLabel } from "@mui/material";
 import CoreTextField from "@core/components/CoreForm/CoreTextField";
 import { useToast } from "@core/hooks/useToast";
 import { useSigninForm } from "./useSigninForm";
+import { useRouter } from "next/navigation";
 
 const SigninForm = () => {
   const toast = useToast();
   const { form, loginMutation } = useSigninForm();
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = form;
 
   const onSubmit = handleSubmit((data) => {
     loginMutation.mutate(data, {
-      onSuccess: () => toast.success("Login realizado com sucesso!"),
-      onError: (err) => toast.error(err.message),
+      onSuccess: () => {
+        toast.success("Login realizado com sucesso!");
+        router.push("/admin/home");
+      },
+      onError: (err) => {
+        const message = err.message || "E-mail ou senha inválidos";
+        setError("email", { message });
+        setError("password", { message });
+      },
     });
   });
 

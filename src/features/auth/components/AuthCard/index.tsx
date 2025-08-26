@@ -16,7 +16,7 @@ const AuthCard = () => {
           Novo usuário? <Link href="#">Crie uma conta</Link>
         </Typography>
         <SigninForm />
-        <Typography variant="body1">
+        <Typography variant="body2">
           <Link href="#">Obter ajuda para fazer login</Link>
         </Typography>
       </S.AuthSection>

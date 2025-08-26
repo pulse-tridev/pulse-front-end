@@ -103,7 +103,8 @@ axiosJwt.interceptors.response.use(
     // Dispara o refresh
     isRefreshing = true;
     try {
-      const { data } = await axiosRefresh.post("/auth/refresh");
+      // Usa rota interna do Next (same-origin) que lê cookie httpOnly e chama o backend
+      const { data } = await axios.post("/api/session/refresh");
       const newAccessToken = (data as any)?.accessToken as string | undefined;
 
       if (!newAccessToken) {

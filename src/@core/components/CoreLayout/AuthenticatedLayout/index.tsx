@@ -8,6 +8,7 @@ import {
   Sidebar,
   ContentView,
 } from "./components";
+import { useAuth } from "src/features/auth/hooks/useAuth";
 
 type AuthenticatedLayoutProps = {
   children: ReactNode;
@@ -16,6 +17,7 @@ type AuthenticatedLayoutProps = {
 const AuthenticatedLayout = ({ children }: AuthenticatedLayoutProps) => {
   const pathname = usePathname();
   const [isNavCollapsed, setNavCollapsed] = useState(false);
+  const { accessToken, refresh } = useAuth();
 
   const toggleNavCollapsed = useCallback(() => {
     setNavCollapsed((prev) => !prev);
@@ -24,6 +26,14 @@ const AuthenticatedLayout = ({ children }: AuthenticatedLayoutProps) => {
   useEffect(() => {
     setNavCollapsed(false);
   }, [pathname]);
+
+  // Reidrata o accessToken ao montar a área autenticada (caso só exista cookie httpOnly)
+  useEffect(() => {
+    if (!accessToken) {
+      refresh();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <LayoutWrapper>

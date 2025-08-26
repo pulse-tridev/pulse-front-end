@@ -41,7 +41,7 @@ export default function SignInPage() {
           }}
         >
           {/* Left side - Branding / Copyright */}
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body1" color="text.secondary">
             © {new Date().getFullYear()} Pulse Dashboard – Gestão Inteligente
           </Typography>
 
