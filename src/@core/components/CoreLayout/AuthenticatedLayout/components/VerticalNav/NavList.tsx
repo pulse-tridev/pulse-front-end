@@ -9,6 +9,7 @@ type Props = {
   level?: number;
   isActive: (url?: string) => boolean;
   onNavigate: (url: string) => void;
+  collapsed?: boolean;
 };
 
 export default function NavList({
@@ -16,6 +17,7 @@ export default function NavList({
   level = 0,
   isActive,
   onNavigate,
+  collapsed = false,
 }: Props) {
   return (
     <List disablePadding>
@@ -27,6 +29,7 @@ export default function NavList({
             level={level}
             isActive={isActive}
             onNavigate={onNavigate}
+            collapsed={collapsed}
           />
         ) : (
           <NavItem
@@ -35,6 +38,7 @@ export default function NavList({
             level={level}
             isActive={isActive(route.url)}
             onNavigate={onNavigate}
+            collapsed={collapsed}
           />
         )
       )}

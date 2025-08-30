@@ -138,7 +138,6 @@ export const createPalette = (mode: "light" | "dark" = "light") => ({
     light: spectrumColors.blue[900],
     dark: spectrumColors.blue[900],
     contrastText: "#ffffff",
-    
   },
   secondary: {
     main: spectrumColors.red[900],
@@ -171,8 +170,8 @@ export const createPalette = (mode: "light" | "dark" = "light") => ({
     contrastText: "#ffffff",
   },
   background: {
-    default: "#FFFFFF",
-    paper: "#f9f9f9",
+    default: "#fafafa", // cinza-claro aconchegante
+    paper: "#ffffff",
   },
   surface: {
     default: "#ffffff",

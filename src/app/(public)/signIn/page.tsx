@@ -7,7 +7,7 @@ export default function SignInPage() {
   return (
     <UnauthenticatedLayout.Root>
       {/* <UnauthenticatedLayout.Background imgSrc="/images/backgrounds/bg-4k.png" /> */}
-      {/* <UnauthenticatedLayout.Header>
+      <UnauthenticatedLayout.Header>
         <Box
           sx={{
             display: "flex",
@@ -19,7 +19,7 @@ export default function SignInPage() {
         >
           <h3>Pulse.ai</h3>
         </Box>
-      </UnauthenticatedLayout.Header> */}
+      </UnauthenticatedLayout.Header>
 
       <UnauthenticatedLayout.Body>
         <AuthCard />
@@ -34,10 +34,6 @@ export default function SignInPage() {
             flexWrap: "wrap",
             gap: 2,
             width: "100%",
-            // borderTop: "1px solid",
-
-            // py: 1,
-            // px: { xs: 2, sm: 6 },
           }}
         >
           {/* Left side - Branding / Copyright */}

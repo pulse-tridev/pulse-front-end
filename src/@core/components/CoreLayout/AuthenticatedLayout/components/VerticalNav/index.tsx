@@ -1,12 +1,22 @@
 import React from "react";
-import { Box, List, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  List,
+  Typography,
+  useTheme,
+  Tooltip,
+  Divider,
+} from "@mui/material";
 import { useRouter, usePathname } from "next/navigation";
 import NavList from "./NavList";
 import { RouteConfigData } from "@core/routes/types";
 
-type VerticalNavProps = { routesConfig: RouteConfigData[] };
+type VerticalNavProps = {
+  routesConfig: RouteConfigData[];
+  collapsed?: boolean;
+};
 
-const VerticalNav = ({ routesConfig }: VerticalNavProps) => {
+const VerticalNav = ({ routesConfig, collapsed = false }: VerticalNavProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const theme = useTheme();
@@ -16,17 +26,8 @@ const VerticalNav = ({ routesConfig }: VerticalNavProps) => {
 
   return (
     <List component="nav" sx={{ p: 0 }}>
-      <Box sx={{ px: 3, py: 2, mb: 1 }}>
-        <Typography
-          variant="overline"
-          sx={{
-            fontWeight: 600,
-            color: "text.secondary",
-            textTransform: "uppercase",
-          }}
-        >
-          Navegação
-        </Typography>
+      <Box sx={{ px: collapsed ? 0.5 : 2, py: collapsed ? 1 : 1.5, mb: 1 }}>
+        {!collapsed && <Divider sx={{ opacity: 0.5 }} />}
       </Box>
 
       <Box sx={{ flexGrow: 1 }}>
@@ -34,6 +35,7 @@ const VerticalNav = ({ routesConfig }: VerticalNavProps) => {
           routes={routesConfig}
           isActive={isActive}
           onNavigate={onNavigate}
+          collapsed={collapsed}
         />
       </Box>
     </List>

@@ -19,6 +19,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const isDesktopCollapsed = !isMobile && isNavCollapsed;
 
   return (
     <>
@@ -51,15 +52,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </SidebarWrapper>
         </Drawer>
       ) : (
-        <SidebarWrapper>
-          <BrandInfo />
+        <SidebarWrapper collapsed={isDesktopCollapsed}>
+          <BrandInfo
+            collapsed={isDesktopCollapsed}
+            onToggleCollapse={toggleNavCollapsed}
+          />
           <CoreScrollbar
             sx={{
               py: 2,
               height: "calc(100vh - 70px) !important",
             }}
           >
-            <VerticalNav routesConfig={routesConfig} />
+            <VerticalNav
+              routesConfig={routesConfig}
+              collapsed={isDesktopCollapsed}
+            />
           </CoreScrollbar>
         </SidebarWrapper>
       )}

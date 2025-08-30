@@ -7,7 +7,6 @@ export const Wrapper = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  // backgroundColor: theme.palette.background.paper,
   background: `
     linear-gradient(
       135deg,
@@ -39,8 +38,20 @@ export const Header = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  minHeight: "60px",
-  padding: "0 5%",
+  paddingLeft: theme.spacing(10),
+  paddingRight: theme.spacing(10),
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
+
+  [theme.breakpoints.down(1200)]: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
 }));
 
 export const Body = styled(Box)(({ theme }) => ({
@@ -53,10 +64,17 @@ export const Body = styled(Box)(({ theme }) => ({
   backgroundColor: "transparent",
   paddingLeft: theme.spacing(20),
   paddingRight: theme.spacing(20),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
+
+  [theme.breakpoints.down("md")]: {
+    paddingLeft: theme.spacing(10),
+    paddingRight: theme.spacing(10),
+  },
 
   [theme.breakpoints.down("sm")]: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
   },
 }));
 
@@ -65,15 +83,20 @@ export const Footer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width: "100%",
-  height: "40px",
   backgroundColor: theme.palette.background.default,
-  // padding: "0 5%",
-  paddingLeft: theme.spacing(20),
-  paddingRight: theme.spacing(20),
+  paddingLeft: theme.spacing(10),
+  paddingRight: theme.spacing(10),
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
+  width: "100%",
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down(1200)]: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
   },
 }));

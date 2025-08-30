@@ -7,10 +7,13 @@ export const Container = styled(Card)(({ theme }) => ({
   maxHeight: "630px",
   height: "600px",
   zIndex: 1,
-  // borderRadius: theme.shape.borderRadius,
-  // borderRadius: theme.spacing(2),
   background: theme.palette.background.default,
   overflow: "visible",
+
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    height: "100%",
+  },
 }));
 
 export const BrandSection = styled(Box)(({ theme }) => ({
@@ -19,6 +22,10 @@ export const BrandSection = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   width: "550px",
   position: "relative",
+
+  [theme.breakpoints.down(1043)]: {
+    display: "none",
+  },
 }));
 
 export const AuthSection = styled(Box)(({ theme }) => ({
@@ -29,6 +36,12 @@ export const AuthSection = styled(Box)(({ theme }) => ({
   gap: theme.spacing(3),
   width: "490px",
   padding: theme.spacing(8),
+
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(4),
+    width: "100%",
+    height: "100%",
+  },
 }));
 
 export const DentroDeAuthSection = styled(Box)(({ theme }) => ({

@@ -42,7 +42,7 @@ const AuthenticatedLayout = ({ children }: AuthenticatedLayoutProps) => {
           isNavCollapsed={isNavCollapsed}
           toggleNavCollapsed={toggleNavCollapsed}
         />
-        <ContentWrapper>
+        <ContentWrapper collapsed={isNavCollapsed}>
           <Header toggleNavCollapsed={toggleNavCollapsed} />
           <ContentView>{children}</ContentView>
           {/* <Footer /> */}

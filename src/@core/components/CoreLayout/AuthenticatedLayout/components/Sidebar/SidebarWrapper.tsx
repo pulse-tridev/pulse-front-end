@@ -4,10 +4,12 @@ import SidebarBgWrapper from "./SidebarBGWrapper";
 
 type SidebarWrapperProps = {
   children: ReactNode;
+  collapsed?: boolean;
 };
 
 const SidebarWrapper: React.FC<SidebarWrapperProps> = ({
   children,
+  collapsed,
   ...rest
 }) => {
   return (
@@ -18,7 +20,7 @@ const SidebarWrapper: React.FC<SidebarWrapperProps> = ({
         top: 0,
         left: 0,
         zIndex: theme.zIndex.drawer + 1,
-        width: 280,
+        width: { xs: 280, lg: collapsed ? 72 : 280 },
         maxHeight: "100vh",
         height: "100%",
         backgroundColor: "background.paper",

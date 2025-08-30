@@ -1,6 +1,7 @@
 "use client";
 
 import AuthenticatedLayout from "@core/components/CoreLayout/AuthenticatedLayout";
+import DashboardLayout from "@core/components/CoreLayout/DashboardLayout";
 import React from "react";
 
 type Props = {
@@ -8,5 +9,5 @@ type Props = {
 };
 
 export default function PrivateLayout({ children }: Props) {
-  return <AuthenticatedLayout>{children}</AuthenticatedLayout>;
+  return <DashboardLayout>{children}</DashboardLayout>;
 }

@@ -3,16 +3,23 @@ import Box from "@mui/material/Box";
 
 type ContentWrapperProps = {
   children: ReactNode;
+  collapsed?: boolean;
 };
 
-export const ContentWrapper: React.FC<ContentWrapperProps> = ({ children }) => {
+export const ContentWrapper: React.FC<ContentWrapperProps> = ({
+  children,
+  collapsed,
+}) => {
   return (
     <Box
       sx={{
         flex: 1,
         display: "flex",
-        ml: { lg: "280px" },
-        width: { xs: "100%", lg: `calc(100% - 280px)` },
+        ml: { lg: collapsed ? `72px` : `280px` },
+        width: {
+          xs: "100%",
+          lg: collapsed ? `calc(100% - 72px)` : `calc(100% - 280px)`,
+        },
         flexDirection: "column",
         position: "relative",
         transition: (theme) =>
