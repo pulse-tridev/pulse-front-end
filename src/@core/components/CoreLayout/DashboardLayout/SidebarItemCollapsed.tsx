@@ -8,11 +8,14 @@ import {
   Tooltip,
   Collapse,
   List,
+  Badge,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuItem, MenuLink, MenuNested } from "./types";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 type Props = {
   item: MenuItem;
@@ -59,7 +62,7 @@ function SidebarItemCollapsedComponent({ item, open, onToggle }: Props) {
         px: 0,
         py: 0,
         minHeight: 36,
-        my: 0.75,
+        my: 0,
         width: 36,
         minWidth: 36,
         mx: "auto",
@@ -107,12 +110,51 @@ function SidebarItemCollapsedComponent({ item, open, onToggle }: Props) {
         })}
       >
         {item.icon &&
-          (React.isValidElement(item.icon)
-            ? item.icon
-            : (() => {
-                const IconComp = item.icon as React.ElementType;
-                return <IconComp />;
-              })())}
+          (isNested(item) ? (
+            <Badge
+              overlap="circular"
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              badgeContent={
+                open ? (
+                  <ExpandLessIcon sx={{ fontSize: 14 }} />
+                ) : (
+                  <ExpandMoreIcon sx={{ fontSize: 14 }} />
+                )
+              }
+              sx={{
+                "& .MuiBadge-badge": {
+                  p: 0,
+                  minWidth: 0,
+                  height: 14,
+                  width: 14,
+                  borderRadius: "50%",
+                  backgroundColor: (theme) =>
+                    alpha(theme.palette.background.paper, 0.9),
+                  color: "inherit",
+                  boxShadow: (theme) =>
+                    `0 0 0 1px ${alpha(theme.palette.divider, 0.8)}`,
+                  pointerEvents: "none",
+                  // leve deslocamento para baixo/esquerda para não cobrir o ícone base
+                  bottom: 2,
+                  left: 3,
+                },
+              }}
+            >
+              {React.isValidElement(item.icon)
+                ? item.icon
+                : (() => {
+                    const IconComp = item.icon as React.ElementType;
+                    return <IconComp />;
+                  })()}
+            </Badge>
+          ) : React.isValidElement(item.icon) ? (
+            item.icon
+          ) : (
+            (() => {
+              const IconComp = item.icon as React.ElementType;
+              return <IconComp />;
+            })()
+          ))}
       </ListItemIcon>
     </ListItemButton>
   );

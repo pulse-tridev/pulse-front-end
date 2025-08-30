@@ -6,6 +6,7 @@ import {
   Settings,
   Add,
   TableRows,
+  Person,
 } from "@mui/icons-material";
 import { MenuConfig } from "./types";
 
@@ -31,5 +32,11 @@ export const menuConfig: MenuConfig = [
       { label: "Relatórios", icon: BarChart, href: "/dashboard/relatorios" },
     ],
   },
-  { label: "Configurações", icon: Settings, href: "/dashboard/config" },
+  {
+    section: "Sistema",
+    items: [
+      { label: "Perfil", icon: Person, href: "/dashboard/financeiro" },
+      { label: "Configurações", icon: Settings, href: "/dashboard/config" },
+    ],
+  },
 ];

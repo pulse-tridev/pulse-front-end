@@ -115,8 +115,8 @@ export default function Sidebar({
                     disableSticky
                     sx={(theme) => ({
                       px: collapsed ? 0 : 2,
-                      mt: 2,
-                      mb: 1,
+                      mt: collapsed ? 0.5 : 1.5,
+                      mb: collapsed ? 0.5 : 1.5,
                       lineHeight: 1.8,
                       fontSize: 11.5,
                       textTransform: "uppercase",
@@ -151,13 +151,13 @@ export default function Sidebar({
                     sx={
                       collapsed
                         ? {
-                            mb: 1.5,
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             px: 0,
+                            "& > *": { my: 0.5 },
                           }
-                        : { mb: 1.5 }
+                        : { my: 1.5 }
                     }
                   >
                     {group.items.map((item) => {
