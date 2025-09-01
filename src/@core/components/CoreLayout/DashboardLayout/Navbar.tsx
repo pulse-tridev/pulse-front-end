@@ -5,11 +5,13 @@ import {
   Typography,
   IconButton,
   Tooltip,
+  Box,
 } from "@mui/material";
 import { Menu, ChevronLeft, ChevronRight } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import { alpha } from "@mui/material/styles";
+import DashboardAccountPopover from "./DashboardAccountPopover";
+import DashboardNotificationsPopover from "./DashboardNotificationsPopover";
 
 type Props = {
   onToggleMobile: () => void;
@@ -82,6 +84,11 @@ export default function Navbar({
         <Typography variant="h6" noWrap>
           Clínica XYZ
         </Typography>
+        <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ gap: 1, display: "flex" }}>
+          <DashboardNotificationsPopover />
+          <DashboardAccountPopover />
+        </Box>
       </Toolbar>
     </AppBar>
   );

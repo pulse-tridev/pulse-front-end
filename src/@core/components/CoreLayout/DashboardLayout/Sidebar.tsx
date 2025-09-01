@@ -83,7 +83,7 @@ export default function Sidebar({
     >
       {/* Espaço para compensar a AppBar fixa */}
       <Toolbar />
-      <Divider />
+      <Divider color="divider" />
 
       {/* Lista de menus */}
       <List

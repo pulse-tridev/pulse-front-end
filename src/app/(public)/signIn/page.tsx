@@ -7,7 +7,7 @@ export default function SignInPage() {
   return (
     <UnauthenticatedLayout.Root>
       {/* <UnauthenticatedLayout.Background imgSrc="/images/backgrounds/bg-4k.png" /> */}
-      <UnauthenticatedLayout.Header>
+      {/* <UnauthenticatedLayout.Header>
         <Box
           sx={{
             display: "flex",
@@ -19,7 +19,7 @@ export default function SignInPage() {
         >
           <h3>Pulse.ai</h3>
         </Box>
-      </UnauthenticatedLayout.Header>
+      </UnauthenticatedLayout.Header> */}
 
       <UnauthenticatedLayout.Body>
         <AuthCard />

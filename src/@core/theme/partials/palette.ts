@@ -134,8 +134,8 @@ export const spectrumColors: {
 export const createPalette = (mode: "light" | "dark" = "light") => ({
   mode,
   primary: {
-    main: spectrumColors.blue[900],
-    light: spectrumColors.blue[900],
+    main: spectrumColors.blue[800],
+    light: spectrumColors.blue[800],
     dark: spectrumColors.blue[900],
     contrastText: "#ffffff",
   },

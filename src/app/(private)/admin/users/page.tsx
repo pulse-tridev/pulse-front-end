@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
-import { Edit } from "@mui/icons-material";
+import { Edit, Delete } from "@mui/icons-material";
 
 const UsersPage = () => {
   const users = [
@@ -131,15 +131,15 @@ const UsersPage = () => {
 
                     <TableCell align="right">
                       <Tooltip title="Editar">
-                        <IconButton size="small">
+                        <IconButton size="medium">
                           <Edit fontSize="small" />
                         </IconButton>
                       </Tooltip>
-                      {/* <Tooltip title="Excluir">
-                          <IconButton size="small" color="inherit">
-                            <DeleteIcon fontSize="small" />
-                          </IconButton>
-                        </Tooltip> */}
+                      <Tooltip title="Excluir">
+                        <IconButton size="medium" color="inherit">
+                          <Delete fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
 
                       {/* <Button variant="outlined" size="small">
                         Editar

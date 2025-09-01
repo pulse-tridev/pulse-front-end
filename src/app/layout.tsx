@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={manrope.variable} suppressHydrationWarning>
       <head />
       <body>
-        <InitColorSchemeScript attribute="data" />
+        <InitColorSchemeScript attribute="data" defaultMode="light" />
         <AppRouterCacheProvider>
           <ThemeProvider>
             <ReactQueryProvider>

@@ -13,7 +13,7 @@ type Props = {
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
   return (
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme} defaultMode="light">
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         {children}
