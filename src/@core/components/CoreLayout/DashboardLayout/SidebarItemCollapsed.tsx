@@ -13,7 +13,7 @@ import {
 import { alpha } from "@mui/material/styles";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MenuItem, MenuLink, MenuNested } from "./types";
+import { MenuItem, MenuLink, MenuNested } from "../../../routes/types";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 

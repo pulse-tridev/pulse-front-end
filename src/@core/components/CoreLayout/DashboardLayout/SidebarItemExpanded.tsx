@@ -10,7 +10,7 @@ import {
 import { alpha } from "@mui/material/styles";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MenuItem, MenuLink, MenuNested } from "./types";
+import { MenuItem, MenuLink, MenuNested } from "../../../routes/types";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 type Props = {

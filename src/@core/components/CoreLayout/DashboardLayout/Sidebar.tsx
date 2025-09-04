@@ -12,7 +12,12 @@ import {
 import { alpha } from "@mui/material/styles";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import SidebarItem from "./SidebarItem";
-import { MenuConfig, MenuGroup, MenuItem, MenuNested } from "./types";
+import {
+  MenuConfig,
+  MenuGroup,
+  MenuItem,
+  MenuNested,
+} from "../../../routes/types";
 
 export const drawerWidth = 230;
 export const collapsedWidth = 62;

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { MenuItem } from "./types";
+import { MenuItem } from "../../../routes/types";
 import SidebarItemCollapsed from "./SidebarItemCollapsed";
 import SidebarItemExpanded from "./SidebarItemExpanded";
 

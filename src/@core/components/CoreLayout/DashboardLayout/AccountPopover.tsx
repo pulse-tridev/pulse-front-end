@@ -3,7 +3,6 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useAuthStore } from "src/features/auth/store/auth.store";
-
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -13,11 +12,9 @@ import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
-
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { UserModel } from "src/features/auth/models/user.model";
 import { useUserStore } from "src/features/auth/store/user.store";
 
 type MenuAnchor = null | HTMLElement;
@@ -72,7 +69,7 @@ const AccountPopover = () => {
         }}
       >
         <Avatar sx={{ width: 38, height: 38, fontSize: 14, fontWeight: 600 }}>
-          U
+          {user.name[0].toUpperCase()}
         </Avatar>
       </IconButton>
 
@@ -123,8 +120,7 @@ const AccountPopover = () => {
                 color: theme.palette.common.white,
               })}
             >
-              {/* {user.name[0].toUpperCase() ? user.name[0].toUpperCase() : "U"} */}
-              U
+              {user.name[0].toUpperCase()}
             </Avatar>
             <Box sx={{ minWidth: 0 }}>
               <Typography variant="body2" noWrap sx={{ fontWeight: 700 }}>

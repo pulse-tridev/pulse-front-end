@@ -11,8 +11,8 @@ import { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar, { collapsedWidth, drawerWidth } from "./Sidebar";
 import SidebarItem from "./SidebarItem";
-import { menuConfig } from "./menuConfigt";
-import { MenuConfig, MenuGroup, MenuItem } from "./types";
+import { menuConfig } from "@core/routes/menuConfigt";
+import { MenuConfig, MenuGroup, MenuItem } from "../../../routes/types";
 
 // removed local drawerWidth to use the one exported from Sidebar
 

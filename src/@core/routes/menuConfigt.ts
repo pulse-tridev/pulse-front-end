@@ -8,7 +8,7 @@ import {
   TableRows,
   Person,
 } from "@mui/icons-material";
-import { MenuConfig } from "./types";
+import { MenuConfig } from "@core/routes/types";
 
 export const menuConfig: MenuConfig = [
   {
