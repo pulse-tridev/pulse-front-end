@@ -10,8 +10,8 @@ import {
 import { Menu, ChevronLeft, ChevronRight } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import DashboardAccountPopover from "./DashboardAccountPopover";
-import DashboardNotificationsPopover from "./DashboardNotificationsPopover";
+import DashboardAccountPopover from "./AccountPopover";
+import DashboardNotificationsPopover from "./NotificationsPopover";
 
 type Props = {
   onToggleMobile: () => void;

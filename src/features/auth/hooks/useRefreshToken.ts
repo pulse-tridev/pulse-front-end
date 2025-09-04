@@ -1,14 +1,16 @@
 import { useMutation } from "@tanstack/react-query";
-import { AuthService } from "../api/auth.service";
-import { useAuthStore } from "../store/auth.store";
+
+import { AuthService } from "../services/auth.service";
+import { SessionService } from "../services/session.service";
 
 export function useRefreshToken() {
-  const setAccessToken = useAuthStore((s) => s.setAccessToken);
-
   return useMutation({
     mutationFn: AuthService.refreshToken,
-    onSuccess: (data) => {
-      setAccessToken(data.accessToken);
+    onSuccess: async (data) => {
+      await SessionService.applyTokens({
+        accessToken: data.accessToken,
+        refreshToken: data.refreshToken,
+      });
     },
   });
 }

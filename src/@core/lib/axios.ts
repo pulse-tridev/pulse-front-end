@@ -4,6 +4,11 @@ import axios, {
   AxiosHeaders,
 } from "axios";
 import { useAuthStore } from "../../features/auth/store/auth.store";
+import { useUserStore } from "src/features/auth/store/user.store";
+import { SessionService } from "src/features/auth/services/session.service";
+
+const logout = useAuthStore.getState().logout;
+const clearUser = useUserStore.getState().clearUser;
 
 // Base URL compatível com ambientes com/sem prefixo NEXT_PUBLIC
 const BASE_URL =
@@ -12,12 +17,12 @@ const BASE_URL =
 // Clientes Axios
 const axiosJwt = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true,
+  withCredentials: false,
 });
 
 export const axiosRefresh = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true,
+  withCredentials: false,
 });
 
 // Estado de controle do fluxo de refresh
@@ -52,6 +57,13 @@ axiosJwt.interceptors.request.use((config) => {
   return config;
 });
 
+// axiosRefresh: injeta Authorization com o refreshToken
+axiosRefresh.interceptors.request.use((config) => {
+  const { refreshToken } = useAuthStore.getState();
+  setAuthHeader(config as InternalAxiosRequestConfig, refreshToken);
+  return config;
+});
+
 // Tratamento padrão de erro (mensagem vinda do backend)
 function normalizeAxiosError(error: any) {
   const message =
@@ -78,9 +90,9 @@ axiosJwt.interceptors.response.use(
     const isRefreshEndpoint = requestUrl.includes("/auth/refresh");
     const isLoginEndpoint = requestUrl.includes("/auth/login");
     if (isRefreshEndpoint || isLoginEndpoint || originalRequest._retry) {
-      // Nesses casos, faz logout e rejeita (token inválido/expirado definitivamente)
+      // Nesses casos, encerra a sessão e rejeita (token inválido/expirado definitivamente)
       try {
-        useAuthStore.getState().logout();
+        await SessionService.clearSession({ clearSessionFlag: true });
       } catch (_) {}
       return Promise.reject(normalizeAxiosError(error));
     }
@@ -103,16 +115,26 @@ axiosJwt.interceptors.response.use(
     // Dispara o refresh
     isRefreshing = true;
     try {
-      // Usa rota interna do Next (same-origin) que lê cookie httpOnly e chama o backend
-      const { data } = await axios.post("/api/session/refresh");
+      // Garante que temos refreshToken para tentar o refresh
+      const { refreshToken } = useAuthStore.getState();
+      if (!refreshToken) {
+        throw new Error("Sem refresh token disponível");
+      }
+
+      // Chama diretamente o backend com Authorization: Bearer <refreshToken>
+      const { data } = await axiosRefresh.post("/auth/refresh");
       const newAccessToken = (data as any)?.accessToken as string | undefined;
+      const newRefreshToken = (data as any)?.refreshToken as string | undefined;
 
       if (!newAccessToken) {
         throw new Error("Refresh token inválido");
       }
 
-      // Atualiza store e header do request original
-      useAuthStore.getState().setAccessToken(newAccessToken);
+      // Atualiza stores de sessão (tokens e usuário)
+      await SessionService.applyTokens({
+        accessToken: newAccessToken,
+        refreshToken: newRefreshToken,
+      });
       setAuthHeader(originalRequest, newAccessToken);
 
       // Reprocessa fila pendente
@@ -126,7 +148,7 @@ axiosJwt.interceptors.response.use(
       pendingRequestsQueue.forEach(({ reject }) => reject(refreshError));
       pendingRequestsQueue = [];
       try {
-        useAuthStore.getState().logout();
+        await SessionService.clearSession({ clearSessionFlag: true });
       } catch (_) {}
       return Promise.reject(normalizeAxiosError(refreshError));
     } finally {

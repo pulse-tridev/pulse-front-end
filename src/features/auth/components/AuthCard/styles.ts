@@ -7,7 +7,7 @@ export const Container = styled(Card)(({ theme }) => ({
   maxHeight: "630px",
   height: "600px",
   zIndex: 1,
-  background: theme.palette.background.default,
+  background: theme.palette.background.paper,
   overflow: "visible",
 
   [theme.breakpoints.down("sm")]: {

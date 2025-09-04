@@ -1,11 +1,10 @@
-import UnauthenticatedLayout from "@core/components/CoreLayout/UnauthenticatedLayout";
+import AuthLayout from "@core/components/CoreLayout/AuthLayout";
 import { Box, Divider, Link, Stack, Typography } from "@mui/material";
 import AuthCard from "src/features/auth/components/AuthCard";
 
 export default function SignInPage() {
-  const projectName = "Pulse Dashboard - Gestão Inteligente";
   return (
-    <UnauthenticatedLayout.Root>
+    <AuthLayout.Root>
       {/* <UnauthenticatedLayout.Background imgSrc="/images/backgrounds/bg-4k.png" /> */}
       {/* <UnauthenticatedLayout.Header>
         <Box
@@ -21,11 +20,11 @@ export default function SignInPage() {
         </Box>
       </UnauthenticatedLayout.Header> */}
 
-      <UnauthenticatedLayout.Body>
+      <AuthLayout.Body>
         <AuthCard />
-      </UnauthenticatedLayout.Body>
+      </AuthLayout.Body>
 
-      <UnauthenticatedLayout.Footer>
+      <AuthLayout.Footer>
         <Box
           sx={{
             display: "flex",
@@ -77,7 +76,7 @@ export default function SignInPage() {
             </Link>
           </Box>
         </Box>
-      </UnauthenticatedLayout.Footer>
-    </UnauthenticatedLayout.Root>
+      </AuthLayout.Footer>
+    </AuthLayout.Root>
   );
 }

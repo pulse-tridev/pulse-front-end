@@ -1,13 +1,17 @@
 "use client";
 
-import AuthenticatedLayout from "@core/components/CoreLayout/AuthenticatedLayout";
 import DashboardLayout from "@core/components/CoreLayout/DashboardLayout";
 import React from "react";
+import AuthBootstrapGate from "src/features/auth/components/AuthBootstrapGate";
 
 type Props = {
   children: React.ReactNode;
 };
 
 export default function PrivateLayout({ children }: Props) {
-  return <DashboardLayout>{children}</DashboardLayout>;
+  return (
+    <AuthBootstrapGate>
+      <DashboardLayout>{children}</DashboardLayout>
+    </AuthBootstrapGate>
+  );
 }
