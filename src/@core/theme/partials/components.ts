@@ -32,59 +32,6 @@ export const createComponents = (theme: Theme) => ({
       },
     },
   },
-  MuiButton: {
-    defaultProps: {
-      disableElevation: true,
-    },
-    styleOverrides: {
-      root: {
-        ...theme.typography.button,
-        width: "auto",
-        display: "inline-flex",
-        borderRadius: theme.shape.borderRadius,
-        textTransform: "none" as const,
-        minHeight: theme.typography.pxToRem(36),
-        padding: theme.spacing(0.75, 2),
-        boxShadow: "none",
-        fontWeight: 600,
-        fontSize: theme.typography.pxToRem(14),
-        lineHeight: 1.5,
-        transition: "background-color 0.2s ease",
-        "&:hover": {
-          backgroundColor: theme.vars.palette.action.hover,
-        },
-      },
-      contained: {
-        minHeight: theme.typography.pxToRem(32),
-        padding: theme.spacing(1, 2),
-        fontSize: theme.typography.pxToRem(14),
-        borderRadius: 999,
-        fontWeight: 600,
-        boxShadow: "none",
-        "&:hover": {
-          backgroundColor: theme.vars.palette.primary.dark,
-        },
-      },
-      outlined: {
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: "transparent",
-        fontWeight: 600,
-        fontSize: theme.typography.pxToRem(14),
-        minHeight: theme.typography.pxToRem(36),
-        padding: theme.spacing(0.75, 2),
-        boxShadow: "none",
-        "&:hover": {
-          backgroundColor: theme.vars.palette.action.hover,
-        },
-      },
-    },
-  },
-  MuiButtonBase: {
-    defaultProps: {
-      disableRipple: true,
-    },
-  },
-
   MuiCard: {
     styleOverrides: {
       root: {
@@ -176,6 +123,11 @@ export const createComponents = (theme: Theme) => ({
           borderColor: theme.vars.palette.primary.main,
         },
       },
+      // Aumenta levemente a altura do input quando size="small"
+      inputSizeSmall: {
+        paddingTop: theme.typography.pxToRem(10),
+        paddingBottom: theme.typography.pxToRem(10),
+      },
     },
   },
   MuiInputLabel: {
@@ -230,10 +182,39 @@ export const createComponents = (theme: Theme) => ({
       },
     },
   },
+  MuiButton: {
+    defaultProps: {
+      disableElevation: true,
+    },
+    styleOverrides: {
+      root: {
+        ...theme.typography.button,
+        display: "inline-flex",
+        textTransform: "none" as const,
+        boxShadow: "none",
+        fontSize: theme.typography.pxToRem(14),
+        lineHeight: 1.5,
+        transition: "background-color 0.2s ease",
+        // borderRadius: 999,
+      },
+      // Aplicar altura/padding apenas ao size="medium"; demais tamanhos usam default do MUI
+      sizeMedium: {
+        minHeight: theme.typography.pxToRem(40),
+        padding: theme.spacing(1, 2),
+      },
+      contained: {
+        fontWeight: 600,
+      },
+      outlined: {
+        backgroundColor: "transparent",
+        fontWeight: 400,
+      },
+      text: {},
+    },
+  },
   MuiIconButton: {
     styleOverrides: {
       root: {
-        borderRadius: borderRadius.medium,
         "&:hover": {
           backgroundColor: theme.vars.palette.action.hover,
         },

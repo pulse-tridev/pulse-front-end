@@ -65,6 +65,9 @@ export const spectrumColors: {
     700: "#f75c46",
     800: "#ea3829",
     900: "#d31510",
+    1000: "#b10f0c",
+    1100: "#900d0a",
+    1200: "#700a08",
   },
 
   green: {
@@ -78,6 +81,9 @@ export const spectrumColors: {
     700: "#15a46e",
     800: "#008f5d",
     900: "#007a4d",
+    1000: "#006639",
+    1100: "#00512b",
+    1200: "#003d20",
   },
 
   orange: {
@@ -91,6 +97,9 @@ export const spectrumColors: {
     700: "#e46f00",
     800: "#cb5d00",
     900: "#b14c00",
+    1000: "#963d00",
+    1100: "#7a3200",
+    1200: "#5f2600",
   },
   yellow: {
     50: "#FFFDE7",
@@ -103,6 +112,9 @@ export const spectrumColors: {
     700: "#b08c00",
     800: "#9b7800",
     900: "#856600",
+    1000: "#735500",
+    1100: "#5b4300",
+    1200: "#423200",
   },
   purple: {
     50: "#F3E5F5",
@@ -115,6 +127,9 @@ export const spectrumColors: {
     700: "#ae72f9",
     800: "#9d57f4",
     900: "#893de7",
+    1000: "#782cd7",
+    1100: "#6023b0",
+    1200: "#481a87",
   },
 
   teal: {
@@ -128,45 +143,48 @@ export const spectrumColors: {
     700: "#00796B",
     800: "#00695C",
     900: "#004D40",
+    1000: "#003a33",
+    1100: "#002e27",
+    1200: "#00221c",
   },
 };
 
 export const createPalette = (mode: "light" | "dark" = "light") => ({
   mode,
   primary: {
-    main: spectrumColors.blue[800],
-    light: spectrumColors.blue[800],
-    dark: spectrumColors.blue[900],
+    main: spectrumColors.blue[900],
+    light: spectrumColors.blue[900],
+    dark: spectrumColors.blue[1000],
     contrastText: "#ffffff",
   },
   secondary: {
     main: spectrumColors.red[900],
-    light: spectrumColors.gray[800],
-    dark: spectrumColors.gray[800],
+    light: spectrumColors.gray[900],
+    dark: spectrumColors.gray[1000],
     contrastText: "#ffffff",
   },
   error: {
     main: spectrumColors.red[900],
     light: spectrumColors.red[900],
-    dark: spectrumColors.red[900],
+    dark: spectrumColors.red[1000],
     contrastText: "#ffffff",
   },
   warning: {
-    main: spectrumColors.orange[500],
-    light: spectrumColors.orange[300],
-    dark: spectrumColors.orange[700],
+    main: spectrumColors.orange[900],
+    light: spectrumColors.orange[900],
+    dark: spectrumColors.orange[1000],
     contrastText: "#ffffff",
   },
   info: {
-    main: spectrumColors.blue[500],
-    light: spectrumColors.blue[300],
-    dark: spectrumColors.blue[700],
+    main: spectrumColors.blue[900],
+    light: spectrumColors.blue[900],
+    dark: spectrumColors.blue[1000],
     contrastText: "#ffffff",
   },
   success: {
-    main: spectrumColors.green[500],
-    light: spectrumColors.green[300],
-    dark: spectrumColors.green[700],
+    main: spectrumColors.green[900],
+    light: spectrumColors.green[900],
+    dark: spectrumColors.green[1000],
     contrastText: "#ffffff",
   },
   background: {

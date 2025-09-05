@@ -30,7 +30,7 @@ export function middleware(request: NextRequest) {
   // Evita acessar /signin quando já autenticado
   if (isAuthPath(pathname) && hasSessionFlag) {
     const url = request.nextUrl.clone();
-    url.pathname = "/admin/home";
+    url.pathname = "/users/list";
     return NextResponse.redirect(url);
   }
 

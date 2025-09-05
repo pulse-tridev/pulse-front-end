@@ -1,10 +1,10 @@
 "use client";
 
 import { Box, Button, Grid, InputLabel } from "@mui/material";
-import CoreTextField from "@core/components/CoreForm/CoreTextField";
 import { useToast } from "@core/hooks/useToast";
 import { useSigninForm } from "./useSigninForm";
 import { useRouter } from "next/navigation";
+import { CoreTextField } from "@core/components/CoreForm";
 
 const SigninForm = () => {
   const toast = useToast();
@@ -22,7 +22,7 @@ const SigninForm = () => {
     loginMutation.mutate(data, {
       onSuccess: () => {
         toast.success("Login realizado com sucesso!");
-        router.push("/admin/home");
+        router.push("/users/list");
       },
       onError: (err) => {
         const message = err.message || "E-mail ou senha inválidos";
@@ -39,28 +39,25 @@ const SigninForm = () => {
       sx={{ display: "flex", flexDirection: "column", gap: 3, width: "100%" }}
     >
       <Grid>
-        <InputLabel htmlFor="email" sx={{ mb: 1 }}>
-          Endereço de e-mail
-        </InputLabel>
         <CoreTextField
           id="email"
           fullWidth
+          topLabel="Endereço de e-mail"
           {...register("email")}
           error={!!errors.email}
           helperText={errors.email?.message}
           autoComplete="off"
           disabled={loginMutation.isPending}
+          autoFocus
         />
       </Grid>
 
       <Grid>
-        <InputLabel htmlFor="password" sx={{ mb: 1 }}>
-          Senha
-        </InputLabel>
         <CoreTextField
           id="password"
           fullWidth
           type="password"
+          topLabel="Senha"
           {...register("password")}
           error={!!errors.password}
           helperText={errors.password?.message}
@@ -73,8 +70,8 @@ const SigninForm = () => {
         <Button
           type="submit"
           variant="contained"
-          size="large"
           disabled={loginMutation.isPending}
+          fullWidth
         >
           {loginMutation.isPending ? "Entrando..." : "Entrar"}
         </Button>

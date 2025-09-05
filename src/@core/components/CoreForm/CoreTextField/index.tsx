@@ -1,10 +1,13 @@
 import React, { forwardRef } from "react";
 import TextField, { TextFieldProps } from "@mui/material/TextField";
+import { InputLabel, InputLabelProps } from "@mui/material";
 
 // Extensão das props do TextField para incluir propriedades específicas do formulário
 export interface AppTextFieldProps extends Omit<TextFieldProps, "error"> {
   error?: boolean;
   helperText?: string;
+  topLabel?: React.ReactNode;
+  topLabelProps?: InputLabelProps;
 }
 
 /**
@@ -16,22 +19,41 @@ export interface AppTextFieldProps extends Omit<TextFieldProps, "error"> {
  * - Tipagem TypeScript robusta
  * - Reutilizável em diferentes contextos
  */
-const CoreTextField = forwardRef<HTMLInputElement, AppTextFieldProps>(
+export const CoreTextField = forwardRef<HTMLInputElement, AppTextFieldProps>(
   (props, ref) => {
-    const { error = false, helperText, ...otherProps } = props;
+    const {
+      error = false,
+      helperText,
+      topLabel,
+      topLabelProps,
+      id,
+      ...otherProps
+    } = props;
+
+    const mergedLabelProps: InputLabelProps | undefined = topLabel
+      ? {
+          ...(topLabelProps as InputLabelProps),
+          htmlFor: topLabelProps?.htmlFor ?? id,
+          sx: { mb: 1, ...(topLabelProps?.sx as any) },
+        }
+      : undefined;
 
     return (
-      <TextField
-        ref={ref}
-        error={error}
-        helperText={helperText}
-        {...otherProps}
-      />
+      <>
+        {topLabel != null && (
+          <InputLabel {...mergedLabelProps}>{topLabel}</InputLabel>
+        )}
+        <TextField
+          ref={ref}
+          id={id}
+          error={error}
+          helperText={helperText}
+          {...otherProps}
+        />
+      </>
     );
   }
 );
 
 // Nome de exibição para debugging
-CoreTextField.displayName = "AppTextField";
-
-export default CoreTextField;
+CoreTextField.displayName = "CoreTextField";

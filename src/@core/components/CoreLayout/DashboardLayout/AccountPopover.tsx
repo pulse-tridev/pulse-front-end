@@ -69,7 +69,11 @@ const AccountPopover = () => {
         }}
       >
         <Avatar sx={{ width: 38, height: 38, fontSize: 14, fontWeight: 600 }}>
-          {user.name[0].toUpperCase()}
+          {user?.name ? (
+            user.name[0].toUpperCase()
+          ) : (
+            <PersonIcon fontSize="small" />
+          )}
         </Avatar>
       </IconButton>
 
@@ -106,32 +110,36 @@ const AccountPopover = () => {
         }}
       >
         {/* Header minimalista */}
-        <Box sx={{ px: 2, pt: 1.5, pb: 1 }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-            <Avatar
-              // src={mockedUser.photoURL}
-              alt={user.name}
-              sx={(theme) => ({
-                width: 36,
-                height: 36,
-                fontSize: 14,
-                fontWeight: 700,
-                bgcolor: theme.palette.primary.main,
-                color: theme.palette.common.white,
-              })}
-            >
-              {user.name[0].toUpperCase()}
-            </Avatar>
-            <Box sx={{ minWidth: 0 }}>
-              <Typography variant="body2" noWrap sx={{ fontWeight: 700 }}>
-                {user.name}
-              </Typography>
-              <Typography variant="caption" color="text.secondary" noWrap>
-                {user.email}
-              </Typography>
+        {user?.name && (
+          <Box sx={{ px: 2, pt: 1.5, pb: 1 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Avatar
+                // src={mockedUser.photoURL}
+                alt={user.name}
+                sx={(theme) => ({
+                  width: 36,
+                  height: 36,
+                  fontSize: 14,
+                  fontWeight: 700,
+                  bgcolor: theme.palette.primary.main,
+                  color: theme.palette.common.white,
+                })}
+              >
+                {user.name[0].toUpperCase()}
+              </Avatar>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="body2" noWrap sx={{ fontWeight: 700 }}>
+                  {user.name}
+                </Typography>
+                {user?.email && (
+                  <Typography variant="caption" color="text.secondary" noWrap>
+                    {user.email}
+                  </Typography>
+                )}
+              </Box>
             </Box>
           </Box>
-        </Box>
+        )}
         <Divider sx={{ mx: 1 }} />
         <MenuItem onClick={() => handleNavigate("/profile")}>
           <ListItemIcon>

@@ -117,16 +117,16 @@ const NotificationsPopover = () => {
           badgeContent={unreadCount}
           color="error"
           overlap="circular"
-          sx={{
-            "& .MuiBadge-badge": {
-              minWidth: 18,
-              height: 18,
-              fontSize: 11,
-              lineHeight: "18px",
-              fontWeight: 700,
-              border: (theme) => `2px solid ${theme.palette.background.paper}`,
-            },
-          }}
+          // sx={{
+          //   "& .MuiBadge-badge": {
+          //     minWidth: 18,
+          //     height: 18,
+          //     fontSize: 11,
+          //     lineHeight: "18px",
+          //     fontWeight: 700,
+          //     border: (theme) => `2px solid ${theme.palette.background.paper}`,
+          //   },
+          // }}
         >
           <NotificationsIcon />
         </Badge>

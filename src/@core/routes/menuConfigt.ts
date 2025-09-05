@@ -7,6 +7,8 @@ import {
   Add,
   TableRows,
   Person,
+  Group,
+  Dashboard,
 } from "@mui/icons-material";
 import { MenuConfig } from "@core/routes/types";
 
@@ -14,13 +16,14 @@ export const menuConfig: MenuConfig = [
   {
     section: "Principal",
     items: [
-      { label: "Agenda", icon: Event, href: "/admin/users" },
+      { label: "Dashboard", icon: Dashboard, href: "/dashboard" },
+      { label: "Agenda", icon: Event, href: "/agenda" },
       {
         label: "Pacientes",
         icon: People,
         children: [
-          { label: "Lista", icon: TableRows, href: "/admin/home" },
-          { label: "Novo", icon: Add, href: "/dashboard/pacientes/novo" },
+          { label: "Lista", icon: TableRows, href: "/pacientes" },
+          { label: "Novo", icon: Add, href: "/pacientes/novo" },
         ],
       },
     ],
@@ -28,15 +31,23 @@ export const menuConfig: MenuConfig = [
   {
     section: "Gestão",
     items: [
-      { label: "Financeiro", icon: AttachMoney, href: "/dashboard/financeiro" },
-      { label: "Relatórios", icon: BarChart, href: "/dashboard/relatorios" },
+      {
+        label: "Usuários",
+        icon: Group,
+        children: [
+          { label: "Lista", icon: TableRows, href: "/users/list" },
+          { label: "Novo", icon: Add, href: "/users/create" },
+        ],
+      },
+      { label: "Financeiro", icon: AttachMoney, href: "/financeiro" },
+      { label: "Relatórios", icon: BarChart, href: "/relatorios" },
     ],
   },
   {
     section: "Sistema",
     items: [
-      { label: "Perfil", icon: Person, href: "/dashboard/financeiro" },
-      { label: "Configurações", icon: Settings, href: "/dashboard/config" },
+      { label: "Perfil", icon: Person, href: "/perfil" },
+      { label: "Configurações", icon: Settings, href: "/configuracoes" },
     ],
   },
 ];
