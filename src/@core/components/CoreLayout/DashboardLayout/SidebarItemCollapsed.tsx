@@ -208,56 +208,59 @@ function SidebarItemCollapsedComponent({ item, open, onToggle }: Props) {
             {item.children.map((child) => {
               const activeChild = pathname === child.href;
               return (
-                <ListItemButton
+                <Tooltip
                   key={child.label}
-                  component={Link}
-                  href={child.href}
-                  selected={activeChild}
-                  aria-current={activeChild ? "page" : undefined}
-                  sx={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    px: 0,
-                    py: 0,
-                    mb: 0,
-                    minHeight: 36,
-                    width: 36,
-                    minWidth: 36,
-                    mx: "auto",
-                    borderRadius: 1,
-                    "&:hover": { backgroundColor: "transparent" },
-                    "&:hover .MuiListItemIcon-root": (theme) => ({
-                      backgroundColor: activeChild
-                        ? alpha(theme.palette.primary.main, 0.16)
-                        : alpha(theme.palette.primary.main, 0.1),
-                      width: 36,
-                      height: 36,
-                    }),
-                    "&.Mui-selected": (theme) => ({
-                      backgroundColor: "transparent",
-                      color: theme.palette.primary.main,
-                    }),
-                  }}
+                  title={child.label}
+                  placement="right"
                 >
-                  {child.icon && (
-                    <ListItemIcon
+                  <span style={{ display: "block" }}>
+                    <ListItemButton
+                      component={Link}
+                      href={child.href}
+                      selected={activeChild}
+                      aria-current={activeChild ? "page" : undefined}
                       sx={{
-                        minWidth: 0,
-                        display: "flex",
-                        alignItems: "center",
                         justifyContent: "center",
+                        alignItems: "center",
+                        px: 0,
+                        py: 0,
+                        mb: 0,
+                        minHeight: 36,
                         width: 36,
-                        height: 36,
-                        borderRadius: 1.25,
-                        color: (theme) =>
-                          activeChild
-                            ? theme.palette.primary.main
-                            : baseColor(theme),
-                        "& svg": { fontSize: 18, margin: 0 },
+                        minWidth: 36,
+                        mx: "auto",
+                        borderRadius: 1,
+                        "&:hover": { backgroundColor: "transparent" },
+                        "&:hover .MuiListItemIcon-root": (theme) => ({
+                          backgroundColor: activeChild
+                            ? alpha(theme.palette.primary.main, 0.16)
+                            : alpha(theme.palette.primary.main, 0.1),
+                          width: 36,
+                          height: 36,
+                        }),
+                        "&.Mui-selected": (theme) => ({
+                          backgroundColor: "transparent",
+                          color: theme.palette.primary.main,
+                        }),
                       }}
                     >
-                      <Tooltip title={child.label} placement="right">
-                        <span style={{ display: "inline-flex", lineHeight: 0 }}>
+                      {child.icon && (
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: 36,
+                            height: 36,
+                            borderRadius: 1.25,
+                            color: (theme) =>
+                              activeChild
+                                ? theme.palette.primary.main
+                                : baseColor(theme),
+                            "& svg": { fontSize: 18, margin: 0 },
+                          }}
+                        >
                           {React.isValidElement(child.icon)
                             ? child.icon
                             : (() => {
@@ -265,11 +268,11 @@ function SidebarItemCollapsedComponent({ item, open, onToggle }: Props) {
                                   child.icon as React.ElementType;
                                 return <IconComp />;
                               })()}
-                        </span>
-                      </Tooltip>
-                    </ListItemIcon>
-                  )}
-                </ListItemButton>
+                        </ListItemIcon>
+                      )}
+                    </ListItemButton>
+                  </span>
+                </Tooltip>
               );
             })}
           </List>
