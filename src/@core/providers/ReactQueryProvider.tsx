@@ -14,7 +14,7 @@ export default function ReactQueryProvider({
       new QueryClient({
         defaultOptions: {
           queries: {
-            refetchOnWindowFocus: false,
+            refetchOnWindowFocus: true,
             staleTime: 1000 * 60 * 30, // 30 seconds
           },
         },

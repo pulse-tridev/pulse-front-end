@@ -1,6 +1,6 @@
-import { Claims, ClaimsSchema } from "../models/claims.model";
+import { Claims, ClaimsSchema } from "../schemas/claims.schema";
 import { decodeToken } from "./decodeToken";
-import { User } from "../models/user.model";
+import { AuthUser } from "../types";
 
 export function parseClaimsFromAccessToken(
   accessToken: string | null | undefined
@@ -14,12 +14,12 @@ export function parseClaimsFromAccessToken(
 
 export function extractUserFromAccessToken(
   accessToken: string | null | undefined
-): User | null {
+): AuthUser | null {
   const claims = parseClaimsFromAccessToken(accessToken);
   if (!claims) return null;
   return {
     email: claims.email,
     name: claims.name,
     role: claims.role,
-  } as User;
+  } as AuthUser;
 }

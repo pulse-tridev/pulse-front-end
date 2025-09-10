@@ -1,14 +1,14 @@
 import { create } from "zustand";
-import { UserModel } from "../models/user.model";
+import { AuthUser } from "../types";
 
 interface UserStore {
-  user: UserModel;
-  setUser: (user: UserModel) => void;
+  user: AuthUser;
+  setUser: (user: AuthUser) => void;
   clearUser: () => void;
 }
 
 export const useUserStore = create<UserStore>((set) => ({
-  user: {} as UserModel,
-  setUser: (user: UserModel) => set({ user }),
-  clearUser: () => set({ user: {} as UserModel }),
+  user: {} as AuthUser,
+  setUser: (user: AuthUser) => set({ user }),
+  clearUser: () => set({ user: {} as AuthUser }),
 }));

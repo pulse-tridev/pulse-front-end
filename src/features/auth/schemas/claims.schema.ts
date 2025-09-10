@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ROLES } from "./user.model";
+import { ROLES } from "@core/constants/roles";
 
 export const ClaimsSchema = z.object({
   email: z.email(),
