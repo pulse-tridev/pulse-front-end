@@ -25,7 +25,6 @@ let baseTheme = createTheme({
 let theme = createTheme({
   ...baseTheme,
   components: {
-    mergeClassNameAndStyle: true,
     ...createComponents(baseTheme),
   },
   typography: createTypography(baseTheme),

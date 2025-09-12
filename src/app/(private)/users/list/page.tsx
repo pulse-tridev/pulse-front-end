@@ -4,6 +4,8 @@ import UsersListClient from "src/features/user/components/UsersListClient";
 import { UserServiceServer } from "src/features/user/services/user.server";
 import { UserService } from "src/features/user/services/user.service";
 
+export const dynamic = "force-dynamic";
+
 export default async function UsersListPage() {
   // Força consumo do service server-side (fetch com cookies do request)
   let teste;

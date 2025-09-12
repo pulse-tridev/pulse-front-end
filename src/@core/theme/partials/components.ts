@@ -55,7 +55,7 @@ export const createComponents = (theme: Theme) => ({
   },
   MuiTextField: {
     defaultProps: {
-      size: "small",
+      size: "small" as const,
     },
     styleOverrides: {
       root: {
