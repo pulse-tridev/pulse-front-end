@@ -15,3 +15,5 @@ export default function PrivateLayout({ children }: Props) {
     </AuthBootstrapGate>
   );
 }
+
+export const dynamic = "force-dynamic";
