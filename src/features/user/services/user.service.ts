@@ -15,7 +15,7 @@ import {
 import type { GenericResponse } from "@core/schemas/api.schema";
 
 const UserListResponseSchema = paginatedResponseSchema(UserSchema);
-type UserListResponse = z.infer<typeof UserListResponseSchema>;
+export type UserListResponse = z.infer<typeof UserListResponseSchema>;
 
 export const UserService = {
   async create(payload: CreateUser): Promise<User> {
@@ -45,3 +45,6 @@ export const UserService = {
     return genericResponseSchema.parse(data);
   },
 };
+
+// Versões para SSR/Server Components, via fetch com cookies HttpOnly
+// Versões server-only foram movidas para src/features/user/services/user.server.ts

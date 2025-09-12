@@ -31,15 +31,15 @@ export default function RootLayout({
       <body>
         <InitColorSchemeScript attribute="data" defaultMode="light" />
         <AppRouterCacheProvider>
-          <ThemeProvider>
-            <ReactQueryProvider>
+          <ReactQueryProvider>
+            <ThemeProvider>
               <ToastProvider />
               {children}
               <NoSsr>
                 <CoreFloatingChat avatarImage="/images/illustrations/mascot/mascot-front-waving.png" />
               </NoSsr>
-            </ReactQueryProvider>
-          </ThemeProvider>
+            </ThemeProvider>
+          </ReactQueryProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

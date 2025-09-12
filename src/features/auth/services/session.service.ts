@@ -1,53 +1,36 @@
 import axios from "axios";
-import { useAuthStore } from "../store/auth.store";
-import { useUserStore } from "../store/user.store";
-import { extractUserFromAccessToken } from "../utils/claims";
 
-type ApplyTokensOptions = {
-  accessToken: string;
-  refreshToken?: string;
-  setSessionFlag?: boolean;
-};
+// Função para detectar se estamos no servidor ou cliente
+const isServer = typeof window === "undefined";
 
 export const SessionService = {
-  applyTokens: async ({
-    accessToken,
-    refreshToken,
-    setSessionFlag,
-  }: ApplyTokensOptions) => {
-    useAuthStore.getState().setAccessToken(accessToken);
-    if (refreshToken) {
-      useAuthStore.getState().setRefreshToken(refreshToken);
-    }
+  setSessionFlag: async () => {
+    try {
+      if (isServer) {
+        // No servidor, não fazemos requisições HTTP internas
+        // A flag será definida diretamente nos cookies
+        return;
+      }
 
-    const user = extractUserFromAccessToken(accessToken);
-    if (user) {
-      useUserStore.getState().setUser(user);
-    }
-
-    if (setSessionFlag) {
-      try {
-        await axios.post("/api/session/flag/set");
-      } catch (_) {}
+      // No cliente, fazemos a requisição normalmente
+      await axios.post("/api/session/flag/set");
+    } catch (error) {
+      console.error("Erro ao definir flag de sessão:", error);
     }
   },
 
-  syncUserFromAccessToken: (accessToken: string | null | undefined) => {
-    const user = extractUserFromAccessToken(accessToken);
-    if (user) {
-      useUserStore.getState().setUser(user);
-    } else {
-      useUserStore.getState().clearUser();
-    }
-  },
+  clearSessionFlag: async () => {
+    try {
+      if (isServer) {
+        // No servidor, não fazemos requisições HTTP internas
+        // A flag será limpa diretamente nos cookies
+        return;
+      }
 
-  clearSession: async (opts?: { clearSessionFlag?: boolean }) => {
-    useAuthStore.getState().logout();
-    useUserStore.getState().clearUser();
-    if (opts?.clearSessionFlag) {
-      try {
-        await axios.post("/api/session/flag/clear");
-      } catch (_) {}
+      // No cliente, fazemos a requisição normalmente
+      await axios.post("/api/session/flag/clear");
+    } catch (error) {
+      console.error("Erro ao limpar flag de sessão:", error);
     }
   },
 };

@@ -22,7 +22,7 @@ const SigninForm = () => {
     loginMutation.mutate(data, {
       onSuccess: () => {
         toast.success("Login realizado com sucesso!");
-        router.push("/users/list");
+        // O redirecionamento já é feito no hook useLogin
       },
       onError: (err) => {
         const message = err.message || "E-mail ou senha inválidos";

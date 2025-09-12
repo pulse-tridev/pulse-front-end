@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { UserService } from "../services/user.service";
 import type { UpdateUser } from "../schemas/user.schema";
 import { useToast } from "@core/hooks/useToast";
+import { userKeys } from "../queries";
 
 type UpdateArgs = { id: string; data: UpdateUser };
 
@@ -14,9 +15,11 @@ export function useUpdateUser() {
     onSuccess: async (_res, variables) => {
       success("Usuário atualizado com sucesso");
       await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["users"], exact: false }),
+        queryClient.invalidateQueries({ queryKey: userKeys.all, exact: false }),
         queryClient.invalidateQueries({
-          queryKey: ["user", variables?.id],
+          queryKey: userKeys.byUsername(
+            (variables as any)?.data?.username || ""
+          ),
           exact: false,
         }),
       ]);

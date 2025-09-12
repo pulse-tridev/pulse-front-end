@@ -1,21 +1,18 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useAuthStore } from "src/features/auth/store/auth.store";
-import { useRefreshToken } from "../../auth/hooks/useRefreshToken";
+import axios from "@core/lib/axios";
 
 export default function AuthBootstrap() {
   const hasBootstrappedRef = useRef(false);
-  const refreshMutation = useRefreshToken();
 
   useEffect(() => {
     if (hasBootstrappedRef.current) return;
     hasBootstrappedRef.current = true;
 
-    const { accessToken, refreshToken } = useAuthStore.getState();
-    if (accessToken || !refreshToken) return;
-
-    refreshMutation.mutate();
+    // Com cookies HttpOnly, não precisamos fazer refresh manual
+    // O interceptor do axios já cuida disso automaticamente
+    // Este componente agora é apenas um placeholder para compatibilidade
   }, []);
 
   return null;

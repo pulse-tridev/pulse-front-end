@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import { useAuthStore } from "src/features/auth/store/auth.store";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -15,12 +13,12 @@ import { alpha } from "@mui/material/styles";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useUserStore } from "src/features/auth/store/user.store";
+import { useAuth } from "src/features/auth/hooks/useAuth";
 
 type MenuAnchor = null | HTMLElement;
 
 const AccountPopover = () => {
-  const { user } = useUserStore();
+  const { user, logout } = useAuth();
   const router = useRouter();
 
   const [anchorEl, setAnchorEl] = React.useState<MenuAnchor>(null);
@@ -41,14 +39,7 @@ const AccountPopover = () => {
 
   const handleLogout = () => {
     handleClose();
-    useAuthStore.getState().logout();
-    useUserStore.getState().clearUser();
-    axios
-      .post("/api/session/flag/clear")
-      .catch(() => {})
-      .finally(() => {
-        router.push("/signin");
-      });
+    logout();
   };
 
   return (

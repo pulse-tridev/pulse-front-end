@@ -11,15 +11,26 @@ import {
 export const AuthService = {
   async login(payload: LoginRequest): Promise<LoginResponse> {
     const parsedPayload = LoginRequestSchema.parse(payload);
+    // Backend agora seta cookies HttpOnly; resposta pode conter tokens ou não
     const { data } = await axiosJwt.post("/auth/login", parsedPayload);
-    const parsed = LoginResponseSchema.parse(data);
-    return parsed;
+    // Se a API ainda retorna os tokens para compatibilidade, validamos; caso contrário, retornamos shape vazio
+    try {
+      const parsed = LoginResponseSchema.parse(data);
+      return parsed;
+    } catch (_) {
+      // Sem tokens no corpo: retornamos placeholders para compat
+      return { accessToken: "", refreshToken: "" } as LoginResponse;
+    }
   },
 
   async refreshToken(): Promise<RefreshTokenResponse> {
-    // Usa cliente dedicado para refresh (Authorization com refreshToken)
+    // Com cookies HttpOnly, apenas chamamos o endpoint
     const { data } = await axiosRefresh.post("/auth/refresh");
-    const parsed = RefreshTokenResponseSchema.parse(data);
-    return parsed;
+    try {
+      const parsed = RefreshTokenResponseSchema.parse(data);
+      return parsed;
+    } catch (_) {
+      return { accessToken: "", refreshToken: "" } as RefreshTokenResponse;
+    }
   },
 };

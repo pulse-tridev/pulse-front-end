@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRefreshToken } from "../../auth/hooks/useRefreshToken";
 import { Box, CircularProgress } from "@mui/material";
-import { useAuthStore } from "src/features/auth/store/auth.store";
-import { useUserStore } from "src/features/auth/store/user.store";
+import { useAuth } from "../hooks/useAuth";
 
 type Props = {
   children: React.ReactNode;
@@ -12,30 +10,17 @@ type Props = {
 
 export default function AuthBootstrapGate({ children }: Props) {
   const [isBootstrapping, setIsBootstrapping] = useState(true);
-  const startedRef = useRef(false);
-  const refreshMutation = useRefreshToken();
+  const { isLoading, isAuthenticated } = useAuth();
 
   useEffect(() => {
-    if (startedRef.current) return;
-    startedRef.current = true;
-
-    const { accessToken, refreshToken } = useAuthStore.getState();
-    if (accessToken) {
+    // Aguarda o carregamento inicial do useAuth
+    if (!isLoading) {
       setIsBootstrapping(false);
-      return;
     }
-    if (!refreshToken) {
-      setIsBootstrapping(false);
-      return;
-    }
+  }, [isLoading]);
 
-    refreshMutation
-      .mutateAsync()
-      .catch(() => {})
-      .finally(() => setIsBootstrapping(false));
-  }, []);
-
-  if (isBootstrapping) {
+  // Se ainda está carregando, mostra loading
+  if (isBootstrapping || isLoading) {
     return (
       <Box
         sx={{
@@ -50,5 +35,7 @@ export default function AuthBootstrapGate({ children }: Props) {
     );
   }
 
+  // Se não está autenticado, o middleware já redirecionou para /signin
+  // Se chegou aqui, está autenticado
   return <>{children}</>;
 }

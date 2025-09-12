@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { UserService } from "../services/user.service";
 import { useToast } from "@core/hooks/useToast";
+import { userKeys } from "../queries";
 
 export function useDeleteUser() {
   const queryClient = useQueryClient();
@@ -11,7 +12,7 @@ export function useDeleteUser() {
     onSuccess: async () => {
       success("Usuário deletado com sucesso");
       await queryClient.invalidateQueries({
-        queryKey: ["users"],
+        queryKey: userKeys.all,
         exact: false,
       });
     },
