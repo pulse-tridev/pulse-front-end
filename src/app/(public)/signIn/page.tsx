@@ -2,7 +2,7 @@ import AuthLayout from "@core/components/CoreLayout/AuthLayout";
 import { Box, Divider, Link, Stack, Typography } from "@mui/material";
 import AuthCard from "src/features/auth/components/AuthCard";
 
-export default function SignInPage() {
+const SignInPage = () => {
   return (
     <AuthLayout.Root>
       {/* <UnauthenticatedLayout.Background imgSrc="/images/backgrounds/bg-4k.png" /> */}
@@ -79,4 +79,6 @@ export default function SignInPage() {
       </AuthLayout.Footer>
     </AuthLayout.Root>
   );
-}
+};
+
+export default SignInPage;
