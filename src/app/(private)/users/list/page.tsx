@@ -1,5 +1,4 @@
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { getQueryClient } from "../../../get-query-client";
 import UsersListClient from "src/features/user/components/UsersListClient";
 import { UserServiceServer } from "src/features/user/services/user.server";
 import { UserService } from "src/features/user/services/user.service";
