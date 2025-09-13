@@ -29,18 +29,18 @@ export default function RootLayout({
     <html lang="pt-BR" className={manrope.variable} suppressHydrationWarning>
       <head />
       <body>
-        <InitColorSchemeScript attribute="data" defaultMode="light" />
-        <AppRouterCacheProvider>
-          <ReactQueryProvider>
-            <ThemeProvider>
-              <ToastProvider />
-              {children}
-              <NoSsr>
+        {/* <InitColorSchemeScript attribute="data" defaultMode="light" /> */}
+        {/* <AppRouterCacheProvider> */}
+        <ReactQueryProvider>
+          <ThemeProvider>
+            {/* <ToastProvider /> */}
+            {children}
+            {/* <NoSsr>
                 <CoreFloatingChat avatarImage="/images/illustrations/mascot/mascot-front-waving.png" />
-              </NoSsr>
-            </ThemeProvider>
-          </ReactQueryProvider>
-        </AppRouterCacheProvider>
+              </NoSsr> */}
+          </ThemeProvider>
+        </ReactQueryProvider>
+        {/* </AppRouterCacheProvider> */}
       </body>
     </html>
   );

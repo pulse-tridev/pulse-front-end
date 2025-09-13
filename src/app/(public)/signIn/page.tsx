@@ -20,9 +20,9 @@ const SignInPage = () => {
         </Box>
       </UnauthenticatedLayout.Header> */}
 
-      {/* <AuthLayout.Body>
+      <AuthLayout.Body>
         <AuthCard />
-      </AuthLayout.Body> */}
+      </AuthLayout.Body>
 
       <AuthLayout.Footer>
         <Box
