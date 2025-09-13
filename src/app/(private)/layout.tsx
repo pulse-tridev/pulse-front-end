@@ -10,8 +10,8 @@ type Props = {
 
 export default function PrivateLayout({ children }: Props) {
   return (
-    // <AuthBootstrapGate>
-    <DashboardLayout>{children}</DashboardLayout>
-    // </AuthBootstrapGate>
+    <AuthBootstrapGate>
+      <DashboardLayout>{children}</DashboardLayout>
+    </AuthBootstrapGate>
   );
 }
