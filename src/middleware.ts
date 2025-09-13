@@ -39,11 +39,11 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/admin/:path*",
-    "/doctor/:path*",
-    "/secretary/:path*",
-    "/users/:path*",
-    "/signin",
-  ],
+  // matcher: [
+  //   "/admin/:path*",
+  //   "/doctor/:path*",
+  //   "/secretary/:path*",
+  //   "/users/:path*",
+  //   "/signin",
+  // ],
 };
