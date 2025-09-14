@@ -42,7 +42,7 @@ export function useAuthActions(): UseAuthActionsReturn {
     }
     queryClient.setQueryData(authKeys.me, null);
     await queryClient.invalidateQueries({ queryKey: authKeys.me });
-    router.push("/signin");
+    router.push("/auth");
   }, [queryClient, router]);
 
   return { login, logout, refreshUser };

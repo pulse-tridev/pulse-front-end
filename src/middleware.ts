@@ -12,7 +12,7 @@ function isProtectedPath(pathname: string): boolean {
 }
 
 function isAuthPath(pathname: string): boolean {
-  return pathname === "/signin";
+  return pathname === "/auth";
 }
 
 export function middleware(request: NextRequest) {
@@ -23,12 +23,12 @@ export function middleware(request: NextRequest) {
   // Bloqueia rotas privadas sem flag de sessão
   if (isProtectedPath(pathname) && !hasSessionFlag) {
     const url = request.nextUrl.clone();
-    url.pathname = "/signin";
+    url.pathname = "/auth";
     url.searchParams.set("from", pathname);
     return NextResponse.redirect(url);
   }
 
-  // Evita acessar /signin quando já autenticado
+  // Evita acessar /auth quando já autenticado
   if (isAuthPath(pathname) && hasSessionFlag) {
     const url = request.nextUrl.clone();
     url.pathname = "/users/list";
@@ -44,19 +44,19 @@ export function middleware(request: NextRequest) {
 //     "/doctor/:path*",
 //     "/secretary/:path*",
 //     "/users/:path*",
-//     "/signin",
+//     "/auth",
 //   ],
 // };
 
-// export const config = {
-//   matcher: [
-/*
- * Match all request paths except for the ones starting with:
- * - api (API routes)
- * - _next/static (static files)
- * - _next/image (image optimization files)
- * - favicon.ico (favicon file)
- */
-//     "/((?!api|_next/static|_next/image|favicon.ico).*)",
-//   ],
-// };
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
+};

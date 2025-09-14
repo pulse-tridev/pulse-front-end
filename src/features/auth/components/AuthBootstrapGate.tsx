@@ -35,7 +35,7 @@ export default function AuthBootstrapGate({ children }: Props) {
     );
   }
 
-  // Se não está autenticado, o middleware já redirecionou para /signin
+  // Se não está autenticado, o middleware já redirecionou para /auth
   // Se chegou aqui, está autenticado
   return <>{children}</>;
 }
