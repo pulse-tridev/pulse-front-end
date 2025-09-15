@@ -11,7 +11,23 @@ export async function serverFetch(
   input: ServerFetchInput,
   init?: ServerFetchInit
 ) {
-  const url = typeof input === "string" ? `${BASE_URL}${input}` : input;
+  // Monta URL final com suporte a input absoluto e validação de BASE_URL
+  let url: ServerFetchInput = input;
+  if (typeof input === "string") {
+    const isAbsolute = /^https?:\/\//i.test(input);
+    if (isAbsolute) {
+      url = input;
+    } else {
+      const base = (BASE_URL || "").replace(/\/+$/, "");
+      const path = input.replace(/^\/+/, "");
+      if (!base) {
+        throw new Error(
+          "API_BASE_URL/NEXT_PUBLIC_API_BASE_URL não definido no servidor para serverFetch()"
+        );
+      }
+      url = `${base}/${path}`;
+    }
+  }
 
   // Encaminha os cookies da requisição atual para o backend (SSR)
   let cookieHeader: string | undefined;

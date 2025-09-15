@@ -12,13 +12,15 @@ export default async function UsersListPage() {
     errorText = error instanceof Error ? error.message : String(error);
   }
 
-  // return <UsersListClient />;
+  // if (errorText) {
+  //   return <UsersListClient />;
+  // }
+
   return (
     <div>
       {teste?.data.map((user) => (
         <div key={user.id}>{user.name}</div>
       ))}
-      {errorText && <div>{errorText}</div>}
     </div>
   );
 }
