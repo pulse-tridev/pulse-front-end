@@ -21,6 +21,7 @@ export default async function UsersListPage() {
       {teste?.data.map((user) => (
         <div key={user.id}>{user.name}</div>
       ))}
+      {errorText && <div>{errorText}</div>}
     </div>
   );
 }
