@@ -13,7 +13,7 @@ export const UserSchema = z.object({
   cpf: z
     .string()
     .transform((v) => v.replace(/\D/g, ""))
-    .pipe(z.string().min(11)), // opcional: adicionar refine para CPF válido
+    .pipe(z.string().min(11)),
   phone: z
     .string()
     .transform((v) => v.replace(/\D/g, ""))

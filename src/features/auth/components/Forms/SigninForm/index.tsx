@@ -3,13 +3,11 @@
 import { Box, Button, Grid, InputLabel } from "@mui/material";
 import { useToast } from "@core/hooks/useToast";
 import { useSigninForm } from "./useSigninForm";
-import { useRouter } from "next/navigation";
 import { CoreTextField } from "@core/components/CoreForm";
 
 const SigninForm = () => {
   const toast = useToast();
   const { form, loginMutation } = useSigninForm();
-  const router = useRouter();
 
   const {
     register,
@@ -22,7 +20,6 @@ const SigninForm = () => {
     loginMutation.mutate(data, {
       onSuccess: () => {
         toast.success("Login realizado com sucesso!");
-        // O redirecionamento já é feito no hook useLogin
       },
       onError: (err) => {
         const message = err.message || "E-mail ou senha inválidos";

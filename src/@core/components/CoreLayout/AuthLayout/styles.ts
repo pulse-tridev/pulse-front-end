@@ -74,7 +74,7 @@ export const Footer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.background.paper,
   paddingLeft: theme.spacing(10),
   paddingRight: theme.spacing(10),
   paddingTop: theme.spacing(1),
