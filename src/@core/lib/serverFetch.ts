@@ -4,8 +4,13 @@ import { cookies } from "next/headers";
 type ServerFetchInput = Parameters<typeof fetch>[0];
 type ServerFetchInit = Parameters<typeof fetch>[1];
 
-const BASE_URL =
-  process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || "";
+// Lê BASE_URL apenas em runtime para evitar inline no build do Next
+function resolveBaseUrl(): string {
+  // Usar bracket notation evita substituição do webpack em build-time
+  const apiBase = process.env["API_BASE_URL"];
+  const publicApiBase = process.env["NEXT_PUBLIC_API_BASE_URL"];
+  return (apiBase || publicApiBase || "").toString();
+}
 
 export async function serverFetch(
   input: ServerFetchInput,
@@ -18,7 +23,7 @@ export async function serverFetch(
     if (isAbsolute) {
       url = input;
     } else {
-      const base = (BASE_URL || "").replace(/\/+$/, "");
+      const base = (resolveBaseUrl() || "").replace(/\/+$/, "");
       const path = input.replace(/^\/+/, "");
       if (!base) {
         throw new Error(
